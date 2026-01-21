@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Kavin Sundarnath</title>
-  </head>
-  <body>
-    <h1>Hello, I’m Kavin</h1>
-    <p>This site is live via GitHub Pages.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kavin Sundarnath</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sunset"></div>
+
+  <header class="top">
+    <div class="quote">
+      <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
+      <span class="english">(Knowledge grows through questioning)</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="featured" aria-label="Featured">
+      <h2>Featured</h2>
+      <div class="featured-card">
+        <p><strong>Coming soon</strong></p>
+        <p>Add your highlighted article, project, or poem here.</p>
+      </div>
+    </section>
+
+    <!-- Semi-circle navigation near top-right -->
+    <nav class="arc-nav" aria-label="Site navigation">
+      <a class="nav-item i1" href="#about">About</a>
+      <a class="nav-item i2" href="#articles">Articles</a>
+      <a class="nav-item i3" href="#hope-story">Hope Story</a>
+      <a class="nav-item i4" href="#poems">Poems</a>
+      <a class="nav-item i5" href="#projects">Projects</a>
+    </nav>
+
+    <!-- Placeholder sections so links scroll somewhere -->
+    <section id="about" class="section"><h3>About</h3><p>Write your about page content here.</p></section>
+    <section id="articles" class="section"><h3>Articles</h3><p>List articles here (A–Z, tags, etc.).</p></section>
+    <section id="hope-story" class="section"><h3>Hope Story</h3><p>Your hope story goes here.</p></section>
+    <section id="poems" class="section"><h3>Poems</h3><p>Poems list goes here.</p></section>
+    <section id="projects" class="section"><h3>Projects</h3><p>Projects list goes here.</p></section>
+  </main>
+</body>
 </html>
