@@ -8,7 +8,6 @@ body{
   color: #161616;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
   overflow-x: hidden;
-  background: linear-gradient(135deg, #ffffff 0%, #f6fbff 35%, #fff5f7 100%);
 }
 
 /* ---------- Background: light red + light blue + white ---------- */
@@ -108,22 +107,28 @@ body{
 }
 
 /* ---------- Semi-arc nav (top-right) ---------- */
-/* Goal: make pills sit on the LEFT half of a big circle (no mirroring).
-   Trick: shift the circle CENTER to the right inside this box. */
+/* Perfect circles + less curvature:
+   - Larger radius makes arc flatter
+   - Narrower angle range makes arc flatter
+   - Center pushed to the right => looks like left-half of a big circle */
 .arc-nav{
   position: absolute;
   top: 110px;
-  right: -70px;     /* ← push whole arc RIGHT */
 
-  width: 300px;    /* ← slightly wider canvas */
-  height: 360px;
+  /* push arc further right */
+  right: -170px;
 
-  --r: 250px;
-  --cx: 78%;       /* ← move circle center RIGHT */
+  width: 640px;
+  height: 420px;
+
+  /* circle geometry */
+  --r: 340px;   /* bigger radius = flatter */
+  --cx: 92%;
   --cy: 50%;
+
+  pointer-events: none;
 }
 
-/* Circles */
 .nav-circle{
   pointer-events: auto;
   position: absolute;
@@ -132,7 +137,7 @@ body{
 
   width: 92px;
   height: 92px;
-  border-radius: 999px;
+  border-radius: 999px; /* ✅ true circle */
 
   display: inline-flex;
   align-items: center;
@@ -149,46 +154,37 @@ body{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
-  /* keep circles round after parent squish */
   transform-origin: center;
 }
 
-/* Counter-scale so circles stay perfect even though container is scaleY(.82) */
-.arc-nav .c1,
-.arc-nav .c2,
-.arc-nav .c3,
-.arc-nav .c4,
-.arc-nav .c5{
-  /* 1 / 0.82 ≈ 1.2195 */
-  --round: 1.2195;
-}
-
-/* LEFT HALF angles (110°..250°). This is the “mirrored look” without mirroring text */
-.c1{ /* top-left-ish */
-  transform: translate(-50%, -50%) scaleY(var(--round))
-    rotate(110deg) translate(var(--r)) rotate(-110deg);
+/* Flatter LEFT-HALF angles:
+   (smaller spread than 110..250) => flatter arc */
+.c1{
+  transform: translate(-50%, -50%)
+    rotate(135deg) translate(var(--r)) rotate(-135deg);
 }
 .c2{
-  transform: translate(-50%, -50%) scaleY(var(--round))
-    rotate(145deg) translate(var(--r)) rotate(-145deg);
+  transform: translate(-50%, -50%)
+    rotate(160deg) translate(var(--r)) rotate(-160deg);
 }
-.c3{ /* left-most */
-  transform: translate(-50%, -50%) scaleY(var(--round))
-    rotate(180deg) translate(var(--r)) rotate(-180deg);
+.c3{
+  transform: translate(-50%, -50%)
+    rotate(185deg) translate(var(--r)) rotate(-185deg);
 }
 .c4{
-  transform: translate(-50%, -50%) scaleY(var(--round))
-    rotate(215deg) translate(var(--r)) rotate(-215deg);
+  transform: translate(-50%, -50%)
+    rotate(210deg) translate(var(--r)) rotate(-210deg);
 }
-.c5{ /* bottom-left-ish */
-  transform: translate(-50%, -50%) scaleY(var(--round))
-    rotate(250deg) translate(var(--r)) rotate(-250deg);
+.c5{
+  transform: translate(-50%, -50%)
+    rotate(235deg) translate(var(--r)) rotate(-235deg);
 }
 
-/* Hover/focus: lift without breaking arc */
 .nav-circle:hover{
-  transform: translate(-50%, -50%) scaleY(var(--round)) translateY(-2px) scale(1.02);
+  transform: translate(-50%, -50%)
+    translateY(-3px) scale(1.03);
 }
+
 .nav-circle:focus-visible{
   outline: 3px solid rgba(40, 120, 255, 0.35);
   outline-offset: 4px;
@@ -201,7 +197,12 @@ body{
     top: 0;
     right: 0;
     margin: 18px auto 0;
-    width: min(520px, 94vw);
-    transform: scaleY(0.82);
+
+    width: min(640px, 94vw);
+    height: 380px;
+
+    --cx: 78%;
+    --cy: 50%;
+    --r: 300px;
   }
 }
