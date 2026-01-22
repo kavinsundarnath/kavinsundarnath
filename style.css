@@ -119,7 +119,7 @@ body{
   height: 360px;
 
   --r: 250px;
-  --cx: 78%;       /* ← move circle center RIGHT */
+  --cx: 98%;       /* ← move circle center RIGHT */
   --cy: 50%;
 }
 
