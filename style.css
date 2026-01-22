@@ -192,3 +192,10 @@ body{
     --r: 300px;
   }
 }
+.text-link{
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.text-link:hover{ opacity: 0.85; }
