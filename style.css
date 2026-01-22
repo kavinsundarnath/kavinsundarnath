@@ -107,11 +107,6 @@ body{
 }
 
 /* ---------- Semi-arc nav (top-right) ---------- */
-/* Perfect circles + less curvature:
-   - Larger radius makes arc flatter
-   - Narrower angle range makes arc flatter
-   - Center pushed to the right => looks like left-half of a big circle */
-/* ---------- Semi-arc nav (top-right) ---------- */
 .arc-nav{
   position: absolute;
   top: 105px;
@@ -159,6 +154,14 @@ body{
   -webkit-backdrop-filter: blur(10px);
 
   transform-origin: center;
+
+  /* NEW: smooth hover without breaking the arc */
+  transition: box-shadow 180ms ease, filter 180ms ease;
+}
+
+.nav-circle > span{
+  display: inline-block;
+  transition: transform 180ms ease;
 }
 
 /* Even flatter angles (tighter spread) */
@@ -168,14 +171,22 @@ body{
 .c4{ transform: translate(-50%, -50%) rotate(210deg) translate(var(--r)) rotate(-210deg); }
 .c5{ transform: translate(-50%, -50%) rotate(230deg) translate(var(--r)) rotate(-230deg); }
 
+/* NEW: enlarge text slightly on hover/focus */
+.nav-circle:hover > span,
+.nav-circle:focus-visible > span{
+  transform: scale(1.08);
+}
+
 .nav-circle:hover{
-  transform: translate(-50%, -50%) translateY(-3px) scale(1.03);
+  filter: brightness(1.02);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.14);
 }
 
 .nav-circle:focus-visible{
   outline: 3px solid rgba(40, 120, 255, 0.35);
   outline-offset: 4px;
 }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px){
   .arc-nav{
@@ -192,6 +203,8 @@ body{
     --r: 300px;
   }
 }
+
+/* ---------- Text links ---------- */
 .text-link{
   color: inherit;
   font-weight: 700;
