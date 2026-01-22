@@ -113,9 +113,9 @@ body{
 .arc-nav{
   position: absolute;
   top: 110px;
-  right: -60px;     /* ← push whole arc RIGHT */
+  right: -70px;     /* ← push whole arc RIGHT */
 
-  width: 400px;    /* ← slightly wider canvas */
+  width: 300px;    /* ← slightly wider canvas */
   height: 360px;
 
   --r: 250px;
