@@ -111,22 +111,26 @@ body{
    - Larger radius makes arc flatter
    - Narrower angle range makes arc flatter
    - Center pushed to the right => looks like left-half of a big circle */
+/* ---------- Semi-arc nav (top-right) ---------- */
 .arc-nav{
   position: absolute;
-  top: 110px;
+  top: 105px;
 
-  /* push arc further right */
-  right: -170px;
+  /* move the whole thing further RIGHT */
+  right: -260px;
 
-  width: 640px;
-  height: 420px;
+  width: 720px;
+  height: 440px;
 
-  /* circle geometry */
-  --r: 340px;   /* bigger radius = flatter */
-  --cx: 92%;
+  /* flatter arc = bigger radius */
+  --r: 390px;
+
+  /* move the circle-center further right inside the box */
+  --cx: 95%;
   --cy: 50%;
 
   pointer-events: none;
+  z-index: 5;
 }
 
 .nav-circle{
@@ -137,7 +141,7 @@ body{
 
   width: 92px;
   height: 92px;
-  border-radius: 999px; /* ✅ true circle */
+  border-radius: 999px;
 
   display: inline-flex;
   align-items: center;
@@ -157,39 +161,21 @@ body{
   transform-origin: center;
 }
 
-/* Flatter LEFT-HALF angles:
-   (smaller spread than 110..250) => flatter arc */
-.c1{
-  transform: translate(-50%, -50%)
-    rotate(135deg) translate(var(--r)) rotate(-135deg);
-}
-.c2{
-  transform: translate(-50%, -50%)
-    rotate(160deg) translate(var(--r)) rotate(-160deg);
-}
-.c3{
-  transform: translate(-50%, -50%)
-    rotate(185deg) translate(var(--r)) rotate(-185deg);
-}
-.c4{
-  transform: translate(-50%, -50%)
-    rotate(210deg) translate(var(--r)) rotate(-210deg);
-}
-.c5{
-  transform: translate(-50%, -50%)
-    rotate(235deg) translate(var(--r)) rotate(-235deg);
-}
+/* Even flatter angles (tighter spread) */
+.c1{ transform: translate(-50%, -50%) rotate(150deg) translate(var(--r)) rotate(-150deg); }
+.c2{ transform: translate(-50%, -50%) rotate(170deg) translate(var(--r)) rotate(-170deg); }
+.c3{ transform: translate(-50%, -50%) rotate(190deg) translate(var(--r)) rotate(-190deg); }
+.c4{ transform: translate(-50%, -50%) rotate(210deg) translate(var(--r)) rotate(-210deg); }
+.c5{ transform: translate(-50%, -50%) rotate(230deg) translate(var(--r)) rotate(-230deg); }
 
 .nav-circle:hover{
-  transform: translate(-50%, -50%)
-    translateY(-3px) scale(1.03);
+  transform: translate(-50%, -50%) translateY(-3px) scale(1.03);
 }
 
 .nav-circle:focus-visible{
   outline: 3px solid rgba(40, 120, 255, 0.35);
   outline-offset: 4px;
 }
-
 /* ---------- Responsive ---------- */
 @media (max-width: 980px){
   .arc-nav{
