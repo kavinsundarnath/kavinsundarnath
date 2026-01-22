@@ -115,7 +115,7 @@ body{
   top: 110px;
   right: -60px;     /* ← push whole arc RIGHT */
 
-  width: 560px;    /* ← slightly wider canvas */
+  width: 400px;    /* ← slightly wider canvas */
   height: 360px;
 
   --r: 250px;
