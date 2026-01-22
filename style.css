@@ -11,19 +11,18 @@ body {
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
   overflow-x: hidden;
 
-  /* Fallback background (even if .bg fails) */
+  /* Fallback background */
   background: linear-gradient(135deg, #ffffff 0%, #ffe1e7 35%, #dbe9ff 100%);
 }
 
 /* -----------------------------
-   Visible background (light red + light blue + white)
+   Background (light red + light blue + white)
 ------------------------------ */
 .bg{
   position: fixed;
   inset: 0;
   z-index: -2;
 
-  /* Stronger + more visible than before */
   background:
     radial-gradient(900px 520px at 22% 18%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
     radial-gradient(900px 520px at 78% 22%, rgba(255, 185, 200, 0.65), rgba(255,185,200,0) 62%),
@@ -125,7 +124,7 @@ body {
 
 /* -----------------------------
    Semi-circle nav (top-right)
-   Less curvature controlled by --radius
+   "Less curvature" controlled by --radius
 ------------------------------ */
 .arc-nav {
   position: absolute;
@@ -135,8 +134,9 @@ body {
   width: 380px;
   height: 280px;
 
-  /* bigger radius = flatter arc (less curvature) */
-  --radius: 205px;
+  /* BIGGER = flatter arc (less curvature)
+     Try 190..240 to taste */
+  --radius: 215px;
 
   pointer-events: none;
 }
@@ -169,7 +169,7 @@ body {
   transition: transform 160ms ease, background 160ms ease;
 }
 
-/* Visible circle behind each pill */
+/* Clear circle behind each pill */
 .arc-nav .nav-item::before {
   content: "";
   position: absolute;
@@ -177,12 +177,8 @@ body {
   height: 66px;
   border-radius: 50%;
 
-  /* make it slightly off-white so it shows */
   background: rgba(255,255,255,0.92);
-
-  /* stronger border so you SEE it */
   border: 2px solid rgba(0,0,0,0.35);
-
   box-shadow: 0 10px 22px rgba(0,0,0,0.12);
 
   left: 50%;
@@ -196,7 +192,7 @@ body {
   background: rgba(255, 255, 255, 0.90);
 }
 
-/* Arc positions */
+/* Arc positions (semi-circle, slightly flatter) */
 .arc-nav .i1 { transform: translate(-50%, -50%) rotate(-55deg) translate(var(--radius)) rotate(55deg); }
 .arc-nav .i2 { transform: translate(-50%, -50%) rotate(-25deg) translate(var(--radius)) rotate(25deg); }
 .arc-nav .i3 { transform: translate(-50%, -50%) rotate(0deg)   translate(var(--radius)) rotate(0deg);  }
@@ -204,7 +200,7 @@ body {
 .arc-nav .i5 { transform: translate(-50%, -50%) rotate(55deg)  translate(var(--radius)) rotate(-55deg); }
 
 /* -----------------------------
-   Responsive
+   Responsive: move arc below on small screens
 ------------------------------ */
 @media (max-width: 900px) {
   .arc-nav {
