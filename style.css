@@ -108,31 +108,36 @@ body{
 }
 
 /* ---------- Semi-arc nav (top-right) ---------- */
-/* We flatten arc slightly with scaleY on container.
-   IMPORTANT: no scaleX(-1) here (that mirrors text).
-   Instead, we flip the arc direction by adding 180deg to angles below. */
+/* Goal: make pills sit on the LEFT half of a big circle (no mirroring).
+   Trick: shift the circle CENTER to the right inside this box. */
 .arc-nav{
   position: absolute;
   top: 110px;
-  right: 70px;
-  width: 420px;
-  height: 320px;
+  right: 40px;
+
+  width: 520px;     /* bigger box gives room for a larger circle */
+  height: 360px;
+
   pointer-events: none;
 
-  transform: scaleY(0.78);
-  transform-origin: 70% 40%;
+  /* Flatten arc a bit (less curvature feel) */
+  transform: scaleY(0.82);
+  transform-origin: 80% 45%;
 
-  --r: 220px; /* arc radius */
+  --r: 250px;       /* big circle radius */
+  --cx: 72%;        /* circle center X inside box (push right) */
+  --cy: 50%;        /* circle center Y inside box */
 }
 
+/* Circles */
 .nav-circle{
   pointer-events: auto;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: var(--cy);
+  left: var(--cx);
 
-  width: 86px;
-  height: 86px;
+  width: 92px;
+  height: 92px;
   border-radius: 999px;
 
   display: inline-flex;
@@ -149,46 +154,47 @@ body{
   box-shadow: 0 14px 30px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
+  /* keep circles round after parent squish */
+  transform-origin: center;
 }
 
-/* Counter-scale so circles stay round even though parent is squashed */
+/* Counter-scale so circles stay perfect even though container is scaleY(.82) */
 .arc-nav .c1,
 .arc-nav .c2,
 .arc-nav .c3,
 .arc-nav .c4,
 .arc-nav .c5{
-  transform-origin: center;
+  /* 1 / 0.82 ≈ 1.2195 */
+  --round: 1.2195;
 }
 
-/* Original angles: -76, -48, -20, 8, 36
-   Flipped horizontally WITHOUT mirroring text: add 180deg */
-.c1{
-  transform: translate(-50%, -50%) scaleY(1.282)
-    rotate(104deg) translate(var(--r)) rotate(-104deg);
+/* LEFT HALF angles (110°..250°). This is the “mirrored look” without mirroring text */
+.c1{ /* top-left-ish */
+  transform: translate(-50%, -50%) scaleY(var(--round))
+    rotate(110deg) translate(var(--r)) rotate(-110deg);
 }
 .c2{
-  transform: translate(-50%, -50%) scaleY(1.282)
-    rotate(132deg) translate(var(--r)) rotate(-132deg);
+  transform: translate(-50%, -50%) scaleY(var(--round))
+    rotate(145deg) translate(var(--r)) rotate(-145deg);
 }
-.c3{
-  transform: translate(-50%, -50%) scaleY(1.282)
-    rotate(160deg) translate(var(--r)) rotate(-160deg);
+.c3{ /* left-most */
+  transform: translate(-50%, -50%) scaleY(var(--round))
+    rotate(180deg) translate(var(--r)) rotate(-180deg);
 }
 .c4{
-  transform: translate(-50%, -50%) scaleY(1.282)
-    rotate(188deg) translate(var(--r)) rotate(-188deg);
+  transform: translate(-50%, -50%) scaleY(var(--round))
+    rotate(215deg) translate(var(--r)) rotate(-215deg);
 }
-.c5{
-  transform: translate(-50%, -50%) scaleY(1.282)
-    rotate(216deg) translate(var(--r)) rotate(-216deg);
+.c5{ /* bottom-left-ish */
+  transform: translate(-50%, -50%) scaleY(var(--round))
+    rotate(250deg) translate(var(--r)) rotate(-250deg);
 }
 
-/* Hover/focus */
+/* Hover/focus: lift without breaking arc */
 .nav-circle:hover{
-  filter: brightness(1.02);
-  transform: translate(-50%, -50%) scaleY(1.282) translateY(-2px) scale(1.02);
+  transform: translate(-50%, -50%) scaleY(var(--round)) translateY(-2px) scale(1.02);
 }
-
 .nav-circle:focus-visible{
   outline: 3px solid rgba(40, 120, 255, 0.35);
   outline-offset: 4px;
@@ -201,6 +207,7 @@ body{
     top: 0;
     right: 0;
     margin: 18px auto 0;
-    transform: scaleY(0.78);
+    width: min(520px, 94vw);
+    transform: scaleY(0.82);
   }
 }
