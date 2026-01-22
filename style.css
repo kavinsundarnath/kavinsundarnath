@@ -113,20 +113,14 @@ body{
 .arc-nav{
   position: absolute;
   top: 110px;
-  right: 40px;
+  right: -40px;     /* ← push whole arc RIGHT */
 
-  width: 520px;     /* bigger box gives room for a larger circle */
+  width: 560px;    /* ← slightly wider canvas */
   height: 360px;
 
-  pointer-events: none;
-
-  /* Flatten arc a bit (less curvature feel) */
-  transform: scaleY(0.82);
-  transform-origin: 80% 45%;
-
-  --r: 250px;       /* big circle radius */
-  --cx: 72%;        /* circle center X inside box (push right) */
-  --cy: 50%;        /* circle center Y inside box */
+  --r: 250px;
+  --cx: 78%;       /* ← move circle center RIGHT */
+  --cy: 50%;
 }
 
 /* Circles */
