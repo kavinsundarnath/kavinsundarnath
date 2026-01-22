@@ -10,7 +10,7 @@ body{
   overflow-x: hidden;
 }
 
-/* ---------- Background: light red + light blue + white ---------- */
+/* ---------- Background ---------- */
 .bg{
   position: fixed;
   inset: 0;
@@ -23,7 +23,7 @@ body{
   filter: saturate(1.05);
 }
 
-/* ---------- Header (quote centered) ---------- */
+/* ---------- Header ---------- */
 .top{
   display: flex;
   justify-content: center;
@@ -38,14 +38,12 @@ body{
   border: 1px solid rgba(255,255,255,0.88);
   box-shadow: 0 16px 40px rgba(0,0,0,0.10);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .tamil{
   display: block;
   font-weight: 800;
   font-size: 26px;
-  letter-spacing: 0.2px;
 }
 
 .english{
@@ -55,7 +53,7 @@ body{
   opacity: 0.85;
 }
 
-/* ---------- Main layout ---------- */
+/* ---------- Layout ---------- */
 .layout{
   position: relative;
   max-width: 1120px;
@@ -64,15 +62,15 @@ body{
   min-height: 75vh;
 }
 
+/* ---------- Featured ---------- */
 .featured{
   width: min(420px, 92vw);
   margin-top: 18px;
 }
 
 .featured h2{
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   font-size: 24px;
-  letter-spacing: 0.3px;
 }
 
 .featured-card{
@@ -83,21 +81,20 @@ body{
   box-shadow: 0 14px 34px rgba(0,0,0,0.10);
 }
 
-/* ---------- Sections (cards) ---------- */
+/* ---------- Sections ---------- */
 .section{
   margin-top: 22px;
-  padding: 18px 18px;
+  padding: 18px;
   border-radius: 22px;
   background: rgba(255,255,255,0.62);
   border: 1px solid rgba(255,255,255,0.88);
   box-shadow: 0 14px 34px rgba(0,0,0,0.08);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   max-width: 720px;
 }
 
 .section h3{
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   font-size: 22px;
 }
 
@@ -106,21 +103,16 @@ body{
   line-height: 1.55;
 }
 
-/* ---------- Semi-arc nav (top-right) ---------- */
+/* ---------- Arc Navigation ---------- */
 .arc-nav{
   position: absolute;
   top: 105px;
-
-  /* move the whole thing further RIGHT */
   right: -260px;
 
   width: 720px;
   height: 440px;
 
-  /* flatter arc = bigger radius */
   --r: 390px;
-
-  /* move the circle-center further right inside the box */
   --cx: 95%;
   --cy: 50%;
 
@@ -128,12 +120,22 @@ body{
   z-index: 5;
 }
 
+/* anchor = arc position holder */
 .nav-circle{
   pointer-events: auto;
   position: absolute;
   top: var(--cy);
   left: var(--cx);
 
+  width: 0;
+  height: 0;
+
+  text-decoration: none;
+  color: inherit;
+}
+
+/* visible bubble */
+.nav-circle .bubble{
   width: 92px;
   height: 92px;
   border-radius: 999px;
@@ -142,7 +144,6 @@ body{
   align-items: center;
   justify-content: center;
 
-  text-decoration: none;
   font-weight: 700;
   font-size: 13px;
   color: #1a1a1a;
@@ -151,39 +152,32 @@ body{
   border: 2px solid rgba(0,0,0,0.18);
   box-shadow: 0 14px 30px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 
-  transform-origin: center;
-
-  /* NEW: smooth hover without breaking the arc */
-  transition: box-shadow 180ms ease, filter 180ms ease;
+  transform: translate(-50%, -50%);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
 }
 
-.nav-circle > span{
-  display: inline-block;
-  transition: transform 180ms ease;
-}
-
-/* Even flatter angles (tighter spread) */
+/* arc positions */
 .c1{ transform: translate(-50%, -50%) rotate(150deg) translate(var(--r)) rotate(-150deg); }
 .c2{ transform: translate(-50%, -50%) rotate(170deg) translate(var(--r)) rotate(-170deg); }
 .c3{ transform: translate(-50%, -50%) rotate(190deg) translate(var(--r)) rotate(-190deg); }
 .c4{ transform: translate(-50%, -50%) rotate(210deg) translate(var(--r)) rotate(-210deg); }
 .c5{ transform: translate(-50%, -50%) rotate(230deg) translate(var(--r)) rotate(-230deg); }
 
-/* NEW: enlarge text slightly on hover/focus */
-.nav-circle:hover > span,
-.nav-circle:focus-visible > span{
-  transform: scale(1.08);
-}
-
-.nav-circle:hover{
+/* hover/focus: SCALE ONLY THE BUBBLE */
+.nav-circle:hover .bubble,
+.nav-circle:focus-visible .bubble{
+  transform: translate(-50%, -50%) scale(1.08);
   filter: brightness(1.02);
   box-shadow: 0 18px 38px rgba(0,0,0,0.14);
 }
 
 .nav-circle:focus-visible{
-  outline: 3px solid rgba(40, 120, 255, 0.35);
+  outline: none;
+}
+
+.nav-circle:focus-visible .bubble{
+  outline: 3px solid rgba(40,120,255,0.35);
   outline-offset: 4px;
 }
 
