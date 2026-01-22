@@ -119,8 +119,8 @@ body{
   height: 320px;
   pointer-events: none;
 
-  /* flatter arc (less curvature) */
-  transform: scaleY(0.78);
+  /* flip horizontally + keep flatter arc */
+  transform: scaleX(-1) scaleY(0.78);
   transform-origin: 70% 40%;
 }
 
