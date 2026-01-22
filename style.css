@@ -1,146 +1,131 @@
-/* =========================
-   Base reset & typography
-   ========================= */
-* {
-  box-sizing: border-box;
-}
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
 
-html, body {
-  height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
+body{
   margin: 0;
   color: #161616;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
   overflow-x: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #f6fbff 35%, #fff5f7 100%);
 }
 
-/* =========================
-   Background (light red + blue + white)
-   ========================= */
-.bg {
+/* ---------- Background: light red + light blue + white ---------- */
+.bg{
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(900px 560px at 20% 20%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
-    radial-gradient(900px 560px at 85% 25%, rgba(255,215,225,0.75), rgba(255,255,255,0) 62%),
-    radial-gradient(1100px 720px at 30% 95%, rgba(190,220,255,0.75), rgba(255,255,255,0) 64%),
+    radial-gradient(900px 560px at 18% 18%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
+    radial-gradient(900px 560px at 82% 20%, rgba(255,210,220,0.70), rgba(255,255,255,0) 62%),
+    radial-gradient(1100px 720px at 25% 92%, rgba(185,220,255,0.72), rgba(255,255,255,0) 64%),
     linear-gradient(135deg, #ffffff 0%, #f7fbff 45%, #fff3f6 100%);
+  filter: saturate(1.05);
 }
 
-/* =========================
-   Header (quote)
-   ========================= */
-.top {
+/* ---------- Header (quote centered) ---------- */
+.top{
   display: flex;
   justify-content: center;
   padding: 22px 16px 8px;
 }
 
-.quote {
+.quote{
   text-align: center;
-  padding: 14px 20px;
+  padding: 12px 18px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.75);
-  border: 1px solid rgba(255,255,255,0.9);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(255,255,255,0.88);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.10);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.tamil {
+.tamil{
   display: block;
   font-weight: 800;
   font-size: 26px;
+  letter-spacing: 0.2px;
 }
 
-.english {
+.english{
   display: block;
   margin-top: 4px;
   font-size: 14px;
   opacity: 0.85;
 }
 
-/* =========================
-   Main layout
-   ========================= */
-.layout {
+/* ---------- Main layout ---------- */
+.layout{
   position: relative;
   max-width: 1120px;
   margin: 0 auto;
   padding: 18px 16px 90px;
+  min-height: 75vh;
 }
 
-/* =========================
-   Featured
-   ========================= */
-.featured {
+.featured{
   width: min(420px, 92vw);
   margin-top: 18px;
 }
 
-.featured h2 {
+.featured h2{
   margin: 0 0 10px 0;
   font-size: 24px;
+  letter-spacing: 0.3px;
 }
 
-.featured-card {
+.featured-card{
   padding: 16px 18px;
   border-radius: 18px;
-  background: rgba(245,245,245,0.85);
-  border: 1px solid rgba(120,120,120,0.45);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.1);
+  background: rgba(245,245,245,0.82);
+  border: 1px solid rgba(110,110,110,0.45);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
 }
 
-/* =========================
-   Content sections
-   ========================= */
-.section {
+/* ---------- Sections (cards) ---------- */
+.section{
   margin-top: 22px;
   padding: 18px 18px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.65);
-  border: 1px solid rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(255,255,255,0.88);
   box-shadow: 0 14px 34px rgba(0,0,0,0.08);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   max-width: 720px;
 }
 
-.section h3 {
+.section h3{
   margin: 0 0 8px 0;
   font-size: 22px;
 }
 
-.section p {
+.section p{
   margin: 0;
   line-height: 1.55;
 }
 
-/* =========================
-   Semi-circle navigation (RIGHT SIDE)
-   ========================= */
-.arc-nav {
+/* ---------- Semi-arc nav (top-right) ---------- */
+/* We flatten arc slightly with scaleY on container.
+   IMPORTANT: no scaleX(-1) here (that mirrors text).
+   Instead, we flip the arc direction by adding 180deg to angles below. */
+.arc-nav{
   position: absolute;
-  top: 120px;
+  top: 110px;
   right: 70px;
   width: 420px;
   height: 320px;
   pointer-events: none;
 
-  /* flip arc horizontally + flatten */
-  transform: scaleX(-1) scaleY(0.78);
+  transform: scaleY(0.78);
   transform-origin: 70% 40%;
 
-  --r: 220px;
+  --r: 220px; /* arc radius */
 }
 
-/* Base circle style */
-.arc-nav a {
+.nav-circle{
   pointer-events: auto;
   position: absolute;
   top: 50%;
@@ -148,7 +133,7 @@ body {
 
   width: 86px;
   height: 86px;
-  border-radius: 50%;
+  border-radius: 999px;
 
   display: inline-flex;
   align-items: center;
@@ -159,54 +144,63 @@ body {
   font-size: 13px;
   color: #1a1a1a;
 
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.92);
   border: 2px solid rgba(0,0,0,0.18);
   box-shadow: 0 14px 30px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
-
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* -------- Arc positions (text corrected with scaleX(-1)) -------- */
-.arc-nav a:nth-child(3) {
-  transform: translate(-50%, -50%) scaleX(-1) scaleY(1.282)
-             rotate(-20deg) translate(var(--r)) rotate(20deg);
+/* Counter-scale so circles stay round even though parent is squashed */
+.arc-nav .c1,
+.arc-nav .c2,
+.arc-nav .c3,
+.arc-nav .c4,
+.arc-nav .c5{
+  transform-origin: center;
 }
 
-.arc-nav a:nth-child(2) {
-  transform: translate(-50%, -50%) scaleX(-1) scaleY(1.282)
-             rotate(-48deg) translate(var(--r)) rotate(48deg);
+/* Original angles: -76, -48, -20, 8, 36
+   Flipped horizontally WITHOUT mirroring text: add 180deg */
+.c1{
+  transform: translate(-50%, -50%) scaleY(1.282)
+    rotate(104deg) translate(var(--r)) rotate(-104deg);
+}
+.c2{
+  transform: translate(-50%, -50%) scaleY(1.282)
+    rotate(132deg) translate(var(--r)) rotate(-132deg);
+}
+.c3{
+  transform: translate(-50%, -50%) scaleY(1.282)
+    rotate(160deg) translate(var(--r)) rotate(-160deg);
+}
+.c4{
+  transform: translate(-50%, -50%) scaleY(1.282)
+    rotate(188deg) translate(var(--r)) rotate(-188deg);
+}
+.c5{
+  transform: translate(-50%, -50%) scaleY(1.282)
+    rotate(216deg) translate(var(--r)) rotate(-216deg);
 }
 
-.arc-nav a:nth-child(4) {
-  transform: translate(-50%, -50%) scaleX(-1) scaleY(1.282)
-             rotate(8deg) translate(var(--r)) rotate(-8deg);
+/* Hover/focus */
+.nav-circle:hover{
+  filter: brightness(1.02);
+  transform: translate(-50%, -50%) scaleY(1.282) translateY(-2px) scale(1.02);
 }
 
-.arc-nav a:nth-child(1) {
-  transform: translate(-50%, -50%) scaleX(-1) scaleY(1.282)
-             rotate(-76deg) translate(var(--r)) rotate(76deg);
+.nav-circle:focus-visible{
+  outline: 3px solid rgba(40, 120, 255, 0.35);
+  outline-offset: 4px;
 }
 
-.arc-nav a:nth-child(5) {
-  transform: translate(-50%, -50%) scaleX(-1) scaleY(1.282)
-             rotate(36deg) translate(var(--r)) rotate(-36deg);
-}
-
-/* Hover */
-.arc-nav a:hover {
-  box-shadow: 0 18px 38px rgba(0,0,0,0.18);
-}
-
-/* =========================
-   Responsive
-   ========================= */
-@media (max-width: 980px) {
-  .arc-nav {
+/* ---------- Responsive ---------- */
+@media (max-width: 980px){
+  .arc-nav{
     position: relative;
     top: 0;
     right: 0;
-    margin: 20px auto;
-    transform: scaleY(0.78); /* no horizontal flip on mobile */
+    margin: 18px auto 0;
+    transform: scaleY(0.78);
   }
 }
