@@ -114,16 +114,19 @@ body{
   right: 70px;
   width: 420px;
   height: 320px;
+
+  /* allow clicks */
   pointer-events: none;
 
-  /* flip horizontally + keep flatter arc */
+  /* flip horizontally + slightly flatten curvature */
   transform: scaleX(-1) scaleY(0.78);
   transform-origin: 70% 40%;
 
-  --r: 220px; /* radius */
+  --r: 220px; /* arc radius */
 }
 
-.nav-circle{
+/* Style ANY link inside arc-nav as a circle */
+.arc-nav a{
   pointer-events: auto;
   position: absolute;
   top: 50%;
@@ -147,26 +150,33 @@ body{
   box-shadow: 0 14px 30px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
 
-/* counter the parent's squash so circles remain perfect */
-.c1, .c2, .c3, .c4, .c5{
+  /* counter parent squash so circles stay perfect */
   transform-origin: center;
 }
 
-/* Angles tuned for slightly flatter arc (and flipped by parent) */
-.c3{ transform: translate(-50%, -50%) scaleY(1.282) rotate(-20deg) translate(var(--r)) rotate(20deg); }
-.c2{ transform: translate(-50%, -50%) scaleY(1.282) rotate(-48deg) translate(var(--r)) rotate(48deg); }
-.c4{ transform: translate(-50%, -50%) scaleY(1.282) rotate(  8deg) translate(var(--r)) rotate(-8deg); }
-.c1{ transform: translate(-50%, -50%) scaleY(1.282) rotate(-76deg) translate(var(--r)) rotate(76deg); }
-.c5{ transform: translate(-50%, -50%) scaleY(1.282) rotate( 36deg) translate(var(--r)) rotate(-36deg); }
+/* Positions on the arc (use nth-child so class names don't matter) */
+.arc-nav a:nth-child(3){
+  transform: translate(-50%, -50%) scaleY(1.282) rotate(-20deg) translate(var(--r)) rotate(20deg);
+}
+.arc-nav a:nth-child(2){
+  transform: translate(-50%, -50%) scaleY(1.282) rotate(-48deg) translate(var(--r)) rotate(48deg);
+}
+.arc-nav a:nth-child(4){
+  transform: translate(-50%, -50%) scaleY(1.282) rotate(  8deg) translate(var(--r)) rotate(-8deg);
+}
+.arc-nav a:nth-child(1){
+  transform: translate(-50%, -50%) scaleY(1.282) rotate(-76deg) translate(var(--r)) rotate(76deg);
+}
+.arc-nav a:nth-child(5){
+  transform: translate(-50%, -50%) scaleY(1.282) rotate( 36deg) translate(var(--r)) rotate(-36deg);
+}
 
-/* Hover WITHOUT breaking arc positioning */
-.nav-circle:hover{
+.arc-nav a:hover{
   background: rgba(255,255,255,0.98);
   box-shadow: 0 18px 40px rgba(0,0,0,0.18);
 }
-.nav-circle:focus-visible{
+.arc-nav a:focus-visible{
   outline: 3px solid rgba(40, 120, 255, 0.35);
   outline-offset: 4px;
 }
