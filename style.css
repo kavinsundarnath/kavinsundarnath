@@ -2,43 +2,33 @@
    Base reset + typography
 ------------------------------ */
 * { box-sizing: border-box; }
-
 html, body { height: 100%; }
-
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  color: #151515;
+  color: #141414;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
   overflow-x: hidden;
+
+  /* Fallback background (even if .bg fails) */
+  background: linear-gradient(135deg, #ffffff 0%, #ffe1e7 35%, #dbe9ff 100%);
 }
 
 /* -----------------------------
-   Background (light red/blue/white)
+   Visible background (light red + light blue + white)
 ------------------------------ */
-.bg {
+.bg{
   position: fixed;
   inset: 0;
   z-index: -2;
-  background:
-    radial-gradient(900px 520px at 20% 20%, rgba(255, 255, 255, 0.95), rgba(255,255,255,0) 60%),
-    radial-gradient(900px 520px at 80% 25%, rgba(255, 210, 220, 0.85), rgba(255,210,220,0) 60%),
-    radial-gradient(1100px 700px at 50% 90%, rgba(195, 220, 255, 0.90), rgba(195,220,255,0) 65%),
-    linear-gradient(180deg, #ffffff 0%, #ffd6de 40%, #d7e7ff 100%);
-}
 
-/* Optional subtle film grain (very light) */
-.bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  /* Stronger + more visible than before */
+  background:
+    radial-gradient(900px 520px at 22% 18%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
+    radial-gradient(900px 520px at 78% 22%, rgba(255, 185, 200, 0.65), rgba(255,185,200,0) 62%),
+    radial-gradient(1100px 700px at 48% 92%, rgba(165, 205, 255, 0.65), rgba(165,205,255,0) 64%),
+    linear-gradient(180deg, #ffffff 0%, #ffd2dc 45%, #d7e7ff 100%);
 }
 
 /* -----------------------------
@@ -47,15 +37,15 @@ body {
 .top {
   display: flex;
   justify-content: center;
-  padding: 22px 16px 10px;
+  padding: 22px 16px 8px;
 }
 
 .quote {
   text-align: center;
   padding: 12px 18px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255,255,255,0.75);
+  background: rgba(255, 255, 255, 0.70);
+  border: 1px solid rgba(255,255,255,0.90);
   box-shadow: 0 16px 40px rgba(0,0,0,0.10);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -103,8 +93,8 @@ body {
 .featured-card {
   border-radius: 18px;
   padding: 14px 16px;
-  background: rgba(245,245,245,0.55);
-  border: 1px solid rgba(130,130,130,0.45);
+  background: rgba(245,245,245,0.75);
+  border: 1px solid rgba(120,120,120,0.55);
   box-shadow: 0 14px 34px rgba(0,0,0,0.10);
 }
 
@@ -115,8 +105,8 @@ body {
   margin-top: 22px;
   padding: 16px 18px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.42);
-  border: 1px solid rgba(255,255,255,0.70);
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(255,255,255,0.85);
   box-shadow: 0 14px 34px rgba(0,0,0,0.08);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -134,18 +124,19 @@ body {
 }
 
 /* -----------------------------
-   PERFECT semi-circle nav (top-right)
-   - Less curvature controlled by --radius
+   Semi-circle nav (top-right)
+   Less curvature controlled by --radius
 ------------------------------ */
 .arc-nav {
   position: absolute;
-  top: 120px;
-  right: 85px;
-  width: 360px;
-  height: 260px;
+  top: 110px;
+  right: 70px;
 
-  /* Increase radius = less curved arc */
-  --radius: 185px;
+  width: 380px;
+  height: 280px;
+
+  /* bigger radius = flatter arc (less curvature) */
+  --radius: 205px;
 
   pointer-events: none;
 }
@@ -166,54 +157,54 @@ body {
   text-decoration: none;
   font-weight: 700;
   font-size: 14px;
-  color: #121212;
+  color: #101010;
 
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255,255,255,0.75);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255,255,255,0.95);
 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   transition: transform 160ms ease, background 160ms ease;
 }
 
-/* White circle behind each pill */
+/* Visible circle behind each pill */
 .arc-nav .nav-item::before {
   content: "";
   position: absolute;
-  width: 58px;
-  height: 58px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.95);
-  border: 2px solid rgba(0,0,0,0.25);
+
+  /* make it slightly off-white so it shows */
+  background: rgba(255,255,255,0.92);
+
+  /* stronger border so you SEE it */
+  border: 2px solid rgba(0,0,0,0.35);
+
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
 }
 
-/* Hover */
 .arc-nav .nav-item:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-  background: rgba(255, 255, 255, 0.72);
+  transform: translate(-50%, -50%) scale(1.06);
+  background: rgba(255, 255, 255, 0.90);
 }
 
-/* Place items on arc using rotate+translate
-   Adjust angles if you want tighter/wider spread */
-.arc-nav .i1 { transform: translate(-50%, -50%) rotate(-60deg) translate(var(--radius)) rotate(60deg); }
-.arc-nav .i2 { transform: translate(-50%, -50%) rotate(-30deg) translate(var(--radius)) rotate(30deg); }
+/* Arc positions */
+.arc-nav .i1 { transform: translate(-50%, -50%) rotate(-55deg) translate(var(--radius)) rotate(55deg); }
+.arc-nav .i2 { transform: translate(-50%, -50%) rotate(-25deg) translate(var(--radius)) rotate(25deg); }
 .arc-nav .i3 { transform: translate(-50%, -50%) rotate(0deg)   translate(var(--radius)) rotate(0deg);  }
-.arc-nav .i4 { transform: translate(-50%, -50%) rotate(30deg)  translate(var(--radius)) rotate(-30deg); }
-.arc-nav .i5 { transform: translate(-50%, -50%) rotate(60deg)  translate(var(--radius)) rotate(-60deg); }
+.arc-nav .i4 { transform: translate(-50%, -50%) rotate(25deg)  translate(var(--radius)) rotate(-25deg); }
+.arc-nav .i5 { transform: translate(-50%, -50%) rotate(55deg)  translate(var(--radius)) rotate(-55deg); }
 
 /* -----------------------------
-   Safety: hide any accidental extra nav rows
------------------------------- */
-nav:not(.arc-nav) { display: none; }
-
-/* -----------------------------
-   Responsive: arc becomes centered block
+   Responsive
 ------------------------------ */
 @media (max-width: 900px) {
   .arc-nav {
@@ -221,7 +212,5 @@ nav:not(.arc-nav) { display: none; }
     top: 0;
     right: 0;
     margin: 18px auto 0;
-    width: 360px;
-    height: 260px;
   }
 }
