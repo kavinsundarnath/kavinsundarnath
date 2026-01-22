@@ -1,216 +1,66 @@
-/* -----------------------------
-   Base reset + typography
------------------------------- */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-html { scroll-behavior: smooth; }
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kavin Sundarnath</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-body {
-  margin: 0;
-  color: #141414;
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  overflow-x: hidden;
+<body>
+  <div class="bg"></div>
 
-  /* Fallback background (even if .bg fails) */
-  background: linear-gradient(135deg, #ffffff 0%, #ffe1e7 35%, #dbe9ff 100%);
-}
+  <header class="top">
+    <div class="quote" role="note" aria-label="Site quote">
+      <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
+      <span class="english">(Knowledge grows through questioning)</span>
+    </div>
+  </header>
 
-/* -----------------------------
-   Visible background (light red + light blue + white)
------------------------------- */
-.bg{
-  position: fixed;
-  inset: 0;
-  z-index: -2;
+  <main class="layout">
+    <!-- Featured box on left -->
+    <section class="featured" aria-label="Featured">
+      <h2>Featured</h2>
+      <div class="featured-card">
+        <p><strong>Coming soon</strong></p>
+        <p>Add your highlighted article, project, or poem here.</p>
+      </div>
+    </section>
 
-  /* Stronger + more visible than before */
-  background:
-    radial-gradient(900px 520px at 22% 18%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
-    radial-gradient(900px 520px at 78% 22%, rgba(255, 185, 200, 0.65), rgba(255,185,200,0) 62%),
-    radial-gradient(1100px 700px at 48% 92%, rgba(165, 205, 255, 0.65), rgba(165,205,255,0) 64%),
-    linear-gradient(180deg, #ffffff 0%, #ffd2dc 45%, #d7e7ff 100%);
-}
+    <!-- Perfect semi-circle navigation near top-right -->
+    <nav class="arc-nav" aria-label="Site navigation">
+      <a class="nav-item i1" href="#about">About</a>
+      <a class="nav-item i2" href="#articles">Articles</a>
+      <a class="nav-item i3" href="#hope-story">Hope Story</a>
+      <a class="nav-item i4" href="#poems">Poems</a>
+      <a class="nav-item i5" href="#projects">Projects</a>
+    </nav>
 
-/* -----------------------------
-   Top quote (centered)
------------------------------- */
-.top {
-  display: flex;
-  justify-content: center;
-  padding: 22px 16px 8px;
-}
+    <!-- Content sections -->
+    <section id="about" class="section">
+      <h3>About</h3>
+      <p>Write your about page content here.</p>
+    </section>
 
-.quote {
-  text-align: center;
-  padding: 12px 18px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.70);
-  border: 1px solid rgba(255,255,255,0.90);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
+    <section id="articles" class="section">
+      <h3>Articles</h3>
+      <p>List articles here (A–Z, tags, etc.).</p>
+    </section>
 
-.tamil {
-  display: block;
-  font-weight: 800;
-  font-size: 26px;
-  letter-spacing: 0.2px;
-}
+    <section id="hope-story" class="section">
+      <h3>Hope Story</h3>
+      <p>Your hope story goes here.</p>
+    </section>
 
-.english {
-  display: block;
-  margin-top: 4px;
-  font-size: 14px;
-  opacity: 0.85;
-}
+    <section id="poems" class="section">
+      <h3>Poems</h3>
+      <p>Poems list goes here.</p>
+    </section>
 
-/* -----------------------------
-   Main layout
------------------------------- */
-.layout {
-  position: relative;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 18px 16px 90px;
-  min-height: 75vh;
-}
-
-/* -----------------------------
-   Featured on left
------------------------------- */
-.featured {
-  width: min(380px, 92vw);
-  margin-top: 18px;
-}
-
-.featured h2 {
-  margin: 0 0 10px 0;
-  font-size: 22px;
-  letter-spacing: 0.4px;
-}
-
-.featured-card {
-  border-radius: 18px;
-  padding: 14px 16px;
-  background: rgba(245,245,245,0.75);
-  border: 1px solid rgba(120,120,120,0.55);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
-}
-
-/* -----------------------------
-   Sections (content cards)
------------------------------- */
-.section {
-  margin-top: 22px;
-  padding: 16px 18px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.62);
-  border: 1px solid rgba(255,255,255,0.85);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  max-width: 720px;
-}
-
-.section h3 {
-  margin: 0 0 8px 0;
-  font-size: 20px;
-}
-
-.section p {
-  margin: 0;
-  line-height: 1.55;
-}
-
-/* -----------------------------
-   Semi-circle nav (top-right)
-   Less curvature controlled by --radius
------------------------------- */
-.arc-nav {
-  position: absolute;
-  top: 110px;
-  right: 70px;
-
-  width: 380px;
-  height: 280px;
-
-  /* bigger radius = flatter arc (less curvature) */
-  --radius: 205px;
-
-  pointer-events: none;
-}
-
-/* Pills */
-.arc-nav .nav-item {
-  pointer-events: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 10px 14px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  color: #101010;
-
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(255,255,255,0.95);
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  transition: transform 160ms ease, background 160ms ease;
-}
-
-/* Visible circle behind each pill */
-.arc-nav .nav-item::before {
-  content: "";
-  position: absolute;
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-
-  /* make it slightly off-white so it shows */
-  background: rgba(255,255,255,0.92);
-
-  /* stronger border so you SEE it */
-  border: 2px solid rgba(0,0,0,0.35);
-
-  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
-
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.arc-nav .nav-item:hover {
-  transform: translate(-50%, -50%) scale(1.06);
-  background: rgba(255, 255, 255, 0.90);
-}
-
-/* Arc positions */
-.arc-nav .i1 { transform: translate(-50%, -50%) rotate(-55deg) translate(var(--radius)) rotate(55deg); }
-.arc-nav .i2 { transform: translate(-50%, -50%) rotate(-25deg) translate(var(--radius)) rotate(25deg); }
-.arc-nav .i3 { transform: translate(-50%, -50%) rotate(0deg)   translate(var(--radius)) rotate(0deg);  }
-.arc-nav .i4 { transform: translate(-50%, -50%) rotate(25deg)  translate(var(--radius)) rotate(-25deg); }
-.arc-nav .i5 { transform: translate(-50%, -50%) rotate(55deg)  translate(var(--radius)) rotate(-55deg); }
-
-/* -----------------------------
-   Responsive
------------------------------- */
-@media (max-width: 900px) {
-  .arc-nav {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin: 18px auto 0;
-  }
-}
+    <section id="projects" class="section">
+      <h3>Projects</h3>
+      <p>Projects list goes here.</p>
+    </section>
+  </main>
+</body>
+</html>
