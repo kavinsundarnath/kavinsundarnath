@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div class="bg"></div>
+  <div class="bg" aria-hidden="true"></div>
 
   <header class="top">
     <div class="quote" role="note" aria-label="Site quote">
@@ -18,6 +18,7 @@
   </header>
 
   <main class="layout">
+    <!-- Featured box on left -->
     <section class="featured" aria-label="Featured">
       <h2>Featured</h2>
       <div class="featured-card">
@@ -26,14 +27,16 @@
       </div>
     </section>
 
+    <!-- Semi-circle navigation (top-right) -->
     <nav class="arc-nav" aria-label="Site navigation">
-      <a class="nav-item i1" href="#about">About</a>
-      <a class="nav-item i2" href="#articles">Articles</a>
-      <a class="nav-item i3" href="#hope-story">Hope Story</a>
-      <a class="nav-item i4" href="#poems">Poems</a>
-      <a class="nav-item i5" href="#projects">Projects</a>
+      <a class="nav-circle c1" href="#about">About</a>
+      <a class="nav-circle c2" href="#articles">Articles</a>
+      <a class="nav-circle c3" href="#hope-story">Hope Story</a>
+      <a class="nav-circle c4" href="#poems">Poems</a>
+      <a class="nav-circle c5" href="#projects">Projects</a>
     </nav>
 
+    <!-- Sections -->
     <section id="about" class="section">
       <h3>About</h3>
       <p>Write your about page content here.</p>
