@@ -113,13 +113,13 @@ body{
 .arc-nav{
   position: absolute;
   top: 110px;
-  right: -40px;     /* ← push whole arc RIGHT */
+  right: -60px;     /* ← push whole arc RIGHT */
 
   width: 560px;    /* ← slightly wider canvas */
   height: 360px;
 
   --r: 250px;
-  --cx: 98%;       /* ← move circle center RIGHT */
+  --cx: 78%;       /* ← move circle center RIGHT */
   --cy: 50%;
 }
 
