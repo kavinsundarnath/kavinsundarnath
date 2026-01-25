@@ -10,8 +10,9 @@
       margin: 0;
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      /* 10% less transparent than before (was 0.45, now 0.35) */
       background:
-        linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)),
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
         url("mainPageImage.jpg") center / cover no-repeat fixed;
     }
 
@@ -84,19 +85,32 @@
       color: #000;
       font-weight: 800;
       box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-      transition: transform 0.25s ease;
+
+      /* IMPORTANT: prevent “moving” feeling */
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transform-origin: center;
+      will-change: transform;
     }
 
+    /* Only a slight enlarge (no translate jump) */
     .nav-circle:hover{
-      transform: scale(1.08);
+      transform: scale(1.06);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
     }
 
-    /* TRUE CIRCLE POSITIONS (radius = 130px) */
+    /* TRUE CIRCLE POSITIONS */
     .c-about   { top: 0; left: 50%; transform: translate(-50%, 0); }
     .c-articles{ top: 50%; right: 0; transform: translate(0, -50%); }
     .c-projects{ bottom: 0; left: 50%; transform: translate(-50%, 0); }
     .c-hope    { top: 50%; left: 0; transform: translate(0, -50%); }
     .c-poems   { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    /* Keep the base position on hover (scale only) */
+    .c-about:hover    { transform: translate(-50%, 0) scale(1.06); }
+    .c-articles:hover { transform: translate(0, -50%) scale(1.06); }
+    .c-projects:hover { transform: translate(-50%, 0) scale(1.06); }
+    .c-hope:hover     { transform: translate(0, -50%) scale(1.06); }
+    .c-poems:hover    { transform: translate(-50%, -50%) scale(1.06); }
 
     /* MOBILE */
     @media (max-width: 900px){
@@ -122,13 +136,11 @@
 
 <main class="layout">
 
-  <!-- FEATURED LEFT -->
   <section class="featured">
     <h2>Featured</h2>
     <div class="featured-card">Coming soon</div>
   </section>
 
-  <!-- PERFECT CIRCLE RIGHT -->
   <nav class="circle-nav" aria-label="Site navigation">
     <a class="nav-circle c-about" href="#about">About</a>
     <a class="nav-circle c-articles" href="articles.html">Articles</a>
