@@ -1,171 +1,143 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kavin Sundarnath</title>
-  <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* --- Main page background image --- */
     body{
       margin: 0;
       min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
       background:
-        linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)),
+        linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)),
         url("mainPageImage.jpg") center / cover no-repeat fixed;
     }
 
-    /* Hide the old gradient bg div if it still exists */
-    .bg{ display:none; }
+    /* HEADER */
+    .top{
+      text-align: center;
+      padding: 24px 16px 12px;
+    }
+    .quote{
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+    .tamil{
+      display: block;
+      font-size: 26px;
+      font-weight: 800;
+    }
+    .english{
+      font-size: 14px;
+      opacity: 0.8;
+    }
 
-    /* --- Layout: desktop = 2 columns, mobile = stacked --- */
+    /* LAYOUT */
     .layout{
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 28px 16px 90px;
-      display: grid;
-      grid-template-columns: 1fr 520px;
-      gap: 28px;
-      align-items: start;
-    }
-
-    /* keep Featured styling (matches your current look) */
-    .featured{
-      width: 100%;
-      margin-top: 0;
-    }
-
-    /* --- Full circle navigation container --- */
-    .circle-wrap{
       display: flex;
-      justify-content: center;
+      gap: 60px;
+      padding: 40px;
       align-items: center;
+      justify-content: space-between;
     }
 
+    /* FEATURED */
+    .featured{
+      max-width: 420px;
+    }
+    .featured h2{
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+    .featured-card{
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.2);
+      font-weight: 700;
+    }
+
+    /* PERFECT CIRCLE NAV */
     .circle-nav{
       position: relative;
-      width: 460px;
-      height: 460px;
-      pointer-events: none; /* only bubbles clickable */
+      width: 360px;
+      height: 360px;
+      flex-shrink: 0;
     }
 
-    /* bubble button */
     .nav-circle{
-      pointer-events: auto;
       position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 104px;
-      height: 104px;
-      border-radius: 999px;
-
-      display: inline-flex;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      display: flex;
       align-items: center;
       justify-content: center;
-
       text-decoration: none;
+      color: #000;
       font-weight: 800;
-      font-size: 14px;
-      color: #1a1a1a;
-
-      background: rgba(255,255,255,0.92);
-      border: 2px solid rgba(0,0,0,0.18);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.14);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-
-      transform: translate(-50%, -50%);
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      transition: transform 0.25s ease;
     }
 
     .nav-circle:hover{
-      transform: translate(-50%, -50%) scale(1.08);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      transform: scale(1.08);
     }
 
-    .nav-circle:focus-visible{
-      outline: 3px solid rgba(40, 120, 255, 0.35);
-      outline-offset: 4px;
-    }
+    /* TRUE CIRCLE POSITIONS (radius = 130px) */
+    .c-about   { top: 0; left: 50%; transform: translate(-50%, 0); }
+    .c-articles{ top: 50%; right: 0; transform: translate(0, -50%); }
+    .c-projects{ bottom: 0; left: 50%; transform: translate(-50%, 0); }
+    .c-hope    { top: 50%; left: 0; transform: translate(0, -50%); }
+    .c-poems   { top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-    /* --- Position bubbles around a FULL circle ---
-       About at 12 o'clock, Projects at 6 o'clock.
-       Others placed nicely around. */
-    :root{ --r: 185px; } /* circle radius */
-
-    .c1{ transform: translate(-50%, -50%) translate(0, calc(-1 * var(--r))); }              /* About (top) */
-    .c5{ transform: translate(-50%, -50%) translate(0, var(--r)); }                         /* Projects (bottom) */
-    .c2{ transform: translate(-50%, -50%) translate(var(--r), 0); }                         /* Articles (right) */
-    .c4{ transform: translate(-50%, -50%) translate(calc(-1 * var(--r)), 0); }              /* Poems (left) */
-    .c3{ transform: translate(-50%, -50%) translate(130px, 130px); }                        /* Hope Story (bottom-right-ish) */
-
-    /* --- Mobile: circle first, featured below --- */
-    @media (max-width: 980px){
+    /* MOBILE */
+    @media (max-width: 900px){
       .layout{
-        grid-template-columns: 1fr;
-      }
-      .circle-wrap{
-        order: 0;
-      }
-      .featured{
-        order: 1;
+        flex-direction: column;
+        text-align: center;
       }
       .circle-nav{
-        width: min(420px, 92vw);
-        height: min(420px, 92vw);
+        margin-bottom: 40px;
       }
-      :root{ --r: 155px; }
-      .nav-circle{
-        width: 92px;
-        height: 92px;
-        font-size: 13px;
-      }
-      .c3{ transform: translate(-50%, -50%) translate(110px, 110px); }
-    }
-
-    @media (max-width: 420px){
-      :root{ --r: 135px; }
-      .nav-circle{
-        width: 86px;
-        height: 86px;
-        font-size: 12px;
-      }
-      .c3{ transform: translate(-50%, -50%) translate(95px, 95px); }
     }
   </style>
 </head>
 
 <body>
-  <!-- remove old background div usage; kept hidden if still present -->
-  <div class="bg"></div>
 
-  <header class="top">
-    <div class="quote">
-      <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
-      <span class="english">(Knowledge grows through questioning)</span>
-    </div>
-  </header>
+<header class="top">
+  <div class="quote">
+    <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
+    <span class="english">(Knowledge grows through questioning)</span>
+  </div>
+</header>
 
-  <main class="layout">
+<main class="layout">
 
-    <section class="featured">
-      <h2>Featured</h2>
-      <div class="featured-card">
-        <p><strong>Coming soon</strong></p>
-      </div>
-    </section>
+  <!-- FEATURED LEFT -->
+  <section class="featured">
+    <h2>Featured</h2>
+    <div class="featured-card">Coming soon</div>
+  </section>
 
-    <div class="circle-wrap">
-      <nav class="circle-nav" aria-label="Site navigation">
-        <a class="nav-circle c1" href="#about">About</a>
-        <a class="nav-circle c2" href="articles.html">Articles</a>
-        <a class="nav-circle c3" href="#hope-story">Hope Story</a>
-        <a class="nav-circle c4" href="poems.html">Poems</a>
-        <a class="nav-circle c5" href="#projects">Projects</a>
-      </nav>
-    </div>
+  <!-- PERFECT CIRCLE RIGHT -->
+  <nav class="circle-nav" aria-label="Site navigation">
+    <a class="nav-circle c-about" href="#about">About</a>
+    <a class="nav-circle c-articles" href="articles.html">Articles</a>
+    <a class="nav-circle c-projects" href="#projects">Projects</a>
+    <a class="nav-circle c-hope" href="#hope-story">Hope Story</a>
+    <a class="nav-circle c-poems" href="poems.html">Poems</a>
+  </nav>
 
-  </main>
+</main>
+
 </body>
 </html>
