@@ -6,120 +6,93 @@
   <title>Poems</title>
 
   <style>
-    body{
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       color: #000;
     }
 
-    /* Background (10% darker blue shade) */
-    body::before{
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
+    /* Background */
+    .poems-bg {
+      min-height: 100vh;
+      background: 
         linear-gradient(
-          rgba(230,235,255,0.65),
-          rgba(230,235,255,0.65)
+          rgba(255,255,255,0.35),
+          rgba(255,255,255,0.35)
         ),
-        url("poems-bg.jpg") center / cover no-repeat;
-      z-index: -1;
+        url("poemsPageImage.jpg") center / cover no-repeat fixed;
+      padding: 48px 24px 80px;
     }
 
-    main{
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px 100px;
-    }
-
-    .back-link{
+    /* Back link */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 48px;
       font-weight: 700;
       text-decoration: none;
       color: #000;
-      display: inline-block;
-      margin-bottom: 30px;
     }
 
-    h1{
+    /* Title */
+    .page-title {
       text-align: center;
-      font-size: 42px;
-      margin-bottom: 60px;
+      font-size: 44px;
+      margin-bottom: 64px;
+      letter-spacing: 0.5px;
     }
 
-    /* Poem list */
-    .poem-list{
-      max-width: 620px;
+    /* Poems list */
+    .poems-list {
+      max-width: 600px;
       margin: 0 auto;
     }
 
-    .poem-list a{
+    .poems-list a {
       display: block;
-      margin: 26px 0;
+      text-decoration: none;
+      color: #000;
       font-size: 26px;
       font-weight: 700;
-      color: #000;
-      text-decoration: none;
-      transition: opacity 0.2s ease, text-decoration 0.2s ease;
+      margin: 28px 0;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
-    .poem-list a span{
-      display: block;
-      font-size: 18px;
-      font-weight: 400;
-      margin-top: 6px;
+    .poems-list a:hover {
+      opacity: 0.85;
+      transform: translateX(4px);
     }
 
-    .poem-list a:hover{
-      opacity: 0.75;
-      text-decoration: underline;
-    }
-
-    /* Mobile */
-    @media (max-width: 600px){
-      h1{
-        font-size: 34px;
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      .page-title {
+        font-size: 36px;
       }
 
-      .poem-list a{
+      .poems-list a {
         font-size: 22px;
-      }
-
-      .poem-list a span{
-        font-size: 16px;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <main>
+  <main class="poems-bg">
     <a class="back-link" href="index.html">← Back to Home</a>
 
-    <h1>Poems</h1>
+    <h1 class="page-title">Poems</h1>
 
-    <section class="poem-list">
-      <a href="poem-1.html">
-        Discernment
-      </a>
-
-      <a href="poem-2.html">
-        An Uncertain Life
-      </a>
-
-      <a href="poem-3.html">
-        Fire of My Heart
-      </a>
-
-      <a href="poem-4.html">
-        மகிழ்ச்சி
-      </a>
-
-      <a href="poem-5.html">
-        Thanksgiving
-      </a>
-    </section>
+    <nav class="poems-list">
+      <a href="poem-1.html">Discernment</a>
+      <a href="poem-2.html">An Uncertain Life</a>
+      <a href="poem-3.html">Fire of My Heart</a>
+      <a href="poem-4.html">மகிழ்ச்சி</a>
+      <a href="poem-5.html">Thanksgiving</a>
+    </nav>
   </main>
-
 </body>
 </html>
