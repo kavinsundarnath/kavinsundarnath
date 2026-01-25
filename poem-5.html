@@ -4,104 +4,114 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thanksgiving</title>
-  <link rel="stylesheet" href="style.css" />
 
   <style>
-    body{ margin:0; }
+    body{
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
+    /* FULL BACKGROUND */
     .poem-bg{
       min-height: 100vh;
       background:
         linear-gradient(rgba(255,255,255,0.40), rgba(255,255,255,0.40)),
         url("poem-5-image.jpg") center / cover no-repeat fixed;
-      padding: 64px 16px 80px;
+      padding: 64px 24px 90px;
     }
 
-    .poem-card{
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 28px 32px 40px;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      backdrop-filter: none;
+    /* CONTENT AREA */
+    .poem-wrap{
+      max-width: 820px;
+      margin-left: 6%;
     }
 
     .back-link{
       display: inline-block;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       font-weight: 800;
-      color: #111;
+      color: #000;
       text-decoration: underline;
     }
 
     .poem-title{
-      margin: 10px 0 18px;
-      font-size: 44px;
+      font-size: 48px;
       font-weight: 900;
-      letter-spacing: 0.4px;
-      text-align: left;
-      color: #111;
+      margin: 0 0 28px 0;
+      color: #000;
     }
 
-    /* ✅ 50% “brighter” text (lighter color) */
+    /* ✅ DARK + BOLD + BLACK */
     .poem-text{
       white-space: pre-wrap;
       line-height: 1.75;
+      font-size: 20px;
+      font-weight: 800;       /* BOLDER */
+      color: #000;            /* PURE BLACK */
       margin: 0;
-      font-size: 18px;
-      font-weight: 700;
-      text-align: left;
+    }
 
-      /* before: near #111 / black
-         now: lighter gray => “brighter” look */
-      color: rgba(0,0,0,0.55);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+    /* Red acrostic letters */
+    .poem-text .acro{
+      color: #b00000;
+      font-weight: 900;
     }
 
     .poem-sign{
-      margin-top: 28px;
+      margin-top: 36px;
+      font-size: 18px;
       font-weight: 800;
-      text-align: left;
-      color: rgba(0,0,0,0.60);
+      color: #000;
     }
 
-    /* Optional: make the red initials pop more */
-    .poem-text .acrostic{
-      color: rgba(180,0,0,0.95);
-      font-weight: 900;
+    /* MOBILE */
+    @media (max-width: 768px){
+      .poem-wrap{
+        margin-left: 0;
+      }
+      .poem-title{
+        font-size: 38px;
+      }
+      .poem-text{
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="poem-bg">
-    <section class="poem-card">
 
-      <a class="back-link" href="poems.html">← Back to Poems</a>
+<main class="poem-bg">
+  <section class="poem-wrap">
 
-      <h1 class="poem-title">Thanksgiving</h1>
+    <a class="back-link" href="poems.html">← Back to Poems</a>
 
-      <pre class="poem-text"><span class="acrostic">T</span>housand words can’t describe
-<span class="acrostic">H</span>is majestic love and eternal joy.
-<span class="acrostic">A</span> thankful heart makes one smile
-<span class="acrostic">N</span>ovice turns wise in a fiery trial.
+    <h1 class="poem-title">Thanksgiving</h1>
 
-<span class="acrostic">K</span>indness and mercy gleams beyond horizon
-<span class="acrostic">S</span>aving a far-gone can be a burden.
+    <pre class="poem-text"><span class="acro">T</span>housand words can’t describe
+<span class="acro">H</span>is majestic love and eternal joy.
+<span class="acro">A</span> thankful heart makes one smile
+<span class="acro">N</span>ovice turns wise in a fiery trial.
 
-<span class="acrostic">G</span>rateful, I got pulled to the shore
-<span class="acrostic">I</span> thank God, who is in control.
+<span class="acro">K</span>indness and mercy gleams beyond horizon
+<span class="acro">S</span>aving a far-gone can be a burden.
 
-<span class="acrostic">V</span>ersatile and profound are your plans
-<span class="acrostic">I</span>nevitable victory is brought by your hand.
+<span class="acro">G</span>rateful, I got pulled to the shore
+<span class="acro">I</span> thank God, who is in control.
 
-<span class="acrostic">N</span>o power can obscure your glory
-<span class="acrostic">G</span>lad, I am gifted a role in the grand story.</pre>
+<span class="acro">V</span>ersatile and profound are your plans
+<span class="acro">I</span>nevitable victory is brought by your hand.
 
-      <p class="poem-sign">- Kavin -<br>26 Nov 2020</p>
+<span class="acro">N</span>o power can obscure your glory
+<span class="acro">G</span>lad, I am gifted a role in the grand story.</pre>
 
-    </section>
-  </main>
+    <p class="poem-sign">
+      - Kavin -<br>
+      26 Nov 2020
+    </p>
+
+  </section>
+</main>
+
 </body>
 </html>
