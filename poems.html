@@ -6,146 +6,120 @@
   <title>Poems</title>
 
   <style>
-    html, body {
-      height: 100%;
+    body{
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
+      color: #000;
     }
 
-    /* ===== FULL BACKGROUND ===== */
-    body {
+    /* Background (10% darker blue shade) */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
       background:
-        radial-gradient(
-          circle at top left,
-          rgba(180,200,255,0.9),
-          rgba(240,245,255,0.95),
-          rgba(200,210,255,0.9)
-        );
-      background-attachment: fixed;
+        linear-gradient(
+          rgba(230,235,255,0.65),
+          rgba(230,235,255,0.65)
+        ),
+        url("poems-bg.jpg") center / cover no-repeat;
+      z-index: -1;
     }
 
-    /* ===== PAGE WRAPPER ===== */
-    .page {
-      min-height: 100vh;
-      padding: 60px 20px 80px;
+    main{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
     }
 
-    .container {
-      max-width: 960px;
+    .back-link{
+      font-weight: 700;
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    h1{
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 60px;
+    }
+
+    /* Poem list */
+    .poem-list{
+      max-width: 620px;
       margin: 0 auto;
     }
 
-    /* ===== NAV ===== */
-    .back-link {
-      display: inline-block;
-      font-weight: 700;
-      text-decoration: underline;
-      margin-bottom: 30px;
-      color: #000;
-    }
-
-    /* ===== TITLE ===== */
-    h1 {
-      text-align: center;
-      font-size: 48px;
-      font-weight: 900;
-      margin: 10px 0 50px;
-      color: #000;
-    }
-
-    /* ===== POEM LIST ===== */
-    .poem-list {
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
-    }
-
-    .poem-card {
-      padding: 26px 32px;
-      border-radius: 26px;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-      transition: transform 0.25s ease;
-    }
-
-    .poem-card:hover {
-      transform: scale(1.015);
-    }
-
-    .poem-card h3 {
-      margin: 0 0 6px;
+    .poem-list a{
+      display: block;
+      margin: 26px 0;
       font-size: 26px;
-      font-weight: 900;
-    }
-
-    .poem-card a {
+      font-weight: 700;
       color: #000;
       text-decoration: none;
+      transition: opacity 0.2s ease, text-decoration 0.2s ease;
     }
 
-    .poem-card a:hover {
+    .poem-list a span{
+      display: block;
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 6px;
+    }
+
+    .poem-list a:hover{
+      opacity: 0.75;
       text-decoration: underline;
     }
 
-    .poem-card p {
-      margin: 0;
-      font-size: 16px;
-      opacity: 0.9;
-    }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 38px;
+    /* Mobile */
+    @media (max-width: 600px){
+      h1{
+        font-size: 34px;
       }
 
-      .poem-card {
-        padding: 22px;
+      .poem-list a{
+        font-size: 22px;
+      }
+
+      .poem-list a span{
+        font-size: 16px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
-    <section class="container">
 
-      <a href="index.html" class="back-link">← Back to Home</a>
+  <main>
+    <a class="back-link" href="index.html">← Back to Home</a>
 
-      <h1>Poems</h1>
+    <h1>Poems</h1>
 
-      <div class="poem-list">
+    <section class="poem-list">
+      <a href="poem-1.html">
+        Discernment
+      </a>
 
-        <div class="poem-card">
-          <h3><a href="poem-1.html">Poem 1</a></h3>
-          <p>Discernment</p>
-        </div>
+      <a href="poem-2.html">
+        An Uncertain Life
+      </a>
 
-        <div class="poem-card">
-          <h3><a href="poem-2.html">Poem 2</a></h3>
-          <p>An Uncertain Life</p>
-        </div>
+      <a href="poem-3.html">
+        Fire of My Heart
+      </a>
 
-        <div class="poem-card">
-          <h3><a href="poem-3.html">Poem 3</a></h3>
-          <p>Fire of My Heart</p>
-        </div>
+      <a href="poem-4.html">
+        மகிழ்ச்சி
+      </a>
 
-        <div class="poem-card">
-          <h3><a href="poem-4.html">Poem 4</a></h3>
-          <p>மகிழ்ச்சி</p>
-        </div>
-
-        <div class="poem-card">
-          <h3><a href="poem-5.html">Poem 5</a></h3>
-          <p>Thanksgiving</p>
-        </div>
-
-      </div>
-
+      <a href="poem-5.html">
+        Thanksgiving
+      </a>
     </section>
   </main>
+
 </body>
 </html>
