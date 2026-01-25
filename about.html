@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #000;
+
+      /* SAME gradient as Articles */
+      background: linear-gradient(
+        135deg,
+        #f3c6a8 0%,
+        #efe2d8 38%,
+        #e6e9f5 55%,
+        #b7c6ee 78%,
+        #8fa6e8 100%
+      );
+
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .top {
+      padding: 32px 24px 12px;
+      text-align: center;
+    }
+
+    .quote {
+      font-weight: 700;
+    }
+
+    .quote .tamil {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .quote .english {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Page layout */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .back {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+    .back:hover { text-decoration: underline; }
+
+    h1 {
+      text-align: center;
+      font-size: 44px;
+      margin: 0 0 24px;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin: 0 auto 44px;
+      font-size: 20px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 18px;
+      padding: 22px 22px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+    }
+
+    /* Subscribe card */
+    .subscribe {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(0,0,0,0.10);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+    }
+
+    .subscribe h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .subscribe p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    input[type="email"]{
+      flex: 1;
+      padding: 14px 14px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.85);
+      outline: none;
+    }
+
+    input[type="email"]:focus{
+      border-color: rgba(0,0,0,0.55);
+    }
+
+    button{
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover { opacity: 0.92; }
+
+    .fineprint{
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: 0.75;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px){
+      h1 { font-size: 36px; }
+      .form-row { flex-direction: column; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="quote" role="note" aria-label="Site quote">
+      <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
+      <span class="english">(Knowledge grows through questioning)</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <a class="back" href="index.html">← Back to Home</a>
+
+    <h1>About</h1>
+
+    <section class="intro">
+      Hey! I am Kavin Sundarnath - just a regular guy.
+    </section>
+
+    <section class="subscribe" aria-label="Subscribe">
+      <h2>Subscribe</h2>
+      <p>Occasional notes when I publish something new. No spam.</p>
+
+      <!-- Replace action later based on the method you choose -->
+      <form method="post" action="#" id="subscribeForm">
+        <div class="form-row">
+          <input required type="email" name="email" placeholder="Your email address" autocomplete="email" />
+          <button type="submit">Subscribe</button>
+        </div>
+        <div class="fineprint">
+          Confirmation (double opt-in is common): you’ll get an email to confirm before you’re fully subscribed.
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
