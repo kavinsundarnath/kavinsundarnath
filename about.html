@@ -144,6 +144,7 @@
       margin-top: 10px;
       font-size: 12px;
       opacity: 0.75;
+      min-height: 18px; /* so it doesn't jump when message changes */
     }
 
     /* Mobile */
@@ -169,24 +170,63 @@
     <h1>About</h1>
 
     <section class="intro">
-      Hey! I am Kavin Sundarnath.
+      Hi! I am Kavin.
     </section>
 
     <section class="subscribe" aria-label="Subscribe">
       <h2>Subscribe</h2>
       <p>Occasional notes when I publish something new. No spam.</p>
 
-      <!-- Replace action later based on the method you choose -->
-      <form method="post" action="#" id="subscribeForm">
+      <form id="subscribeForm">
         <div class="form-row">
-          <input required type="email" name="email" placeholder="Your email address" autocomplete="email" />
+          <input
+            required
+            type="email"
+            id="email"
+            placeholder="Your email address"
+            autocomplete="email"
+          />
           <button type="submit">Subscribe</button>
         </div>
-        <div class="fineprint">
-          Confirmation (double opt-in is common): you’ll get an email to confirm before you’re fully subscribed.
+
+        <!-- status message goes here -->
+        <div class="fineprint" id="msg">
+          Confirmation (double opt-in): you’ll get an email to confirm before you’re fully subscribed.
         </div>
       </form>
     </section>
   </main>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKp1vriF-ZOkmwAFXUZlyNNeGK0rz9xzKkHIFmeJT1VmNyt9fB7YrZMW2DvNcnmuAb/exec";
+
+    const form = document.getElementById("subscribeForm");
+    const msg = document.getElementById("msg");
+    const emailEl = document.getElementById("email");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = emailEl.value.trim();
+      if (!email) return;
+
+      msg.textContent = "Submitting…";
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        // With no-cors we can't read the response JSON, so we show a safe success message.
+        msg.textContent = "Check your email to confirm your subscription.";
+        form.reset();
+      } catch (err) {
+        msg.textContent = "Something went wrong. Please try again.";
+      }
+    });
+  </script>
 </body>
 </html>
