@@ -45,12 +45,12 @@ body{
 }
 
 /* ---------- Layout ---------- */
-.layout{
-  display: flex;
-  gap: 60px;
-  padding: 40px;
-  align-items: center;
-  justify-content: space-between;
+.tagline{
+  margin-top: 12px;
+  font-size: 18px;        
+  font-weight: 800;       
+  color: #2b2b2b;         
+  letter-spacing: 0.2px;
 }
 
 /* ---------- Featured ---------- */
