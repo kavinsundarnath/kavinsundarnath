@@ -121,4 +121,146 @@ Contents: kavinsundarnath.com
 
 Your site is now available at: https://kavinsundarnath.com
 
+# 📬 Simple Newsletter System (Google Sheets + Apps Script)
+
+This project implements a lightweight newsletter system using:
+
+- **Google Sheets** as the subscriber database  
+- **Google Apps Script** as the backend (email + API)  
+- **Any static website** (e.g. GitHub Pages) as the frontend  
+
+It supports:
+- Email subscription (double opt-in)
+- Email confirmation
+- Unsubscribe links
+- Manual newsletter sending
+
+No external services required.
+
+---
+
+## 🧩 Architecture Overview
+
+Website (HTML + JS)
+↓
+Google Apps Script (Web App)
+↓
+Google Sheet (Subscribers)
+↓
+Gmail (Emails sent via your account)
+
+---
+
+## 📄 Google Sheet Structure
+
+Create a Google Sheet with a tab named: subscribers
+
+
+Add **exactly these columns** in row 1:
+
+| Column | Name             | Description |
+|------|------------------|------------|
+| A | email | Subscriber email |
+| B | status | `PENDING` / `CONFIRMED` / `UNSUBSCRIBED` |
+| C | token | Confirmation token |
+| D | requested_at | Subscription request time |
+| E | confirmed_at | Confirmation time |
+| F | ip | Optional |
+| G | unsubscribed_at | Unsubscribe time |
+
+---
+
+## ⚙️ Apps Script Setup
+
+1. Open the Google Sheet  
+2. Go to **Extensions → Apps Script**
+3. Paste the backend code into `Code.gs`
+4. Save the project
+
+---
+
+## 🌍 Deploy as Web App
+
+1. Click **Deploy → New deployment**
+2. Type: **Web app**
+3. Execute as: **Me**
+4. Who has access: **Anyone**
+5. Deploy and copy the Web App URL
+
+This URL is your backend API.
+
+---
+
+## ✉️ Subscribe Flow (Website)
+
+From your website, send a **POST request**:
+
+```js
+fetch("WEB_APP_URL", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email })
+});
+
+
+Add **exactly these columns** in row 1:
+
+| Column | Name             | Description |
+|------|------------------|------------|
+| A | email | Subscriber email |
+| B | status | `PENDING` / `CONFIRMED` / `UNSUBSCRIBED` |
+| C | token | Confirmation token |
+| D | requested_at | Subscription request time |
+| E | confirmed_at | Confirmation time |
+| F | ip | Optional |
+| G | unsubscribed_at | Unsubscribe time |
+
+---
+
+## ⚙️ Apps Script Setup
+
+1. Open the Google Sheet  
+2. Go to **Extensions → Apps Script**
+3. Paste the backend code into `Code.gs`
+4. Save the project
+
+---
+
+## 🌍 Deploy as Web App
+
+1. Click **Deploy → New deployment**
+2. Type: **Web app**
+3. Execute as: **Me**
+4. Who has access: **Anyone**
+5. Deploy and copy the Web App URL
+
+This URL is your backend API.
+
+---
+
+## ✉️ Subscribe Flow (Website)
+
+From your website, send a **POST request**:
+
+```js
+fetch("WEB_APP_URL", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email })
+});
+
+What happens
+
+Email is stored as PENDING
+
+A confirmation email is sent
+
+User must click the confirmation link
+
+Confirmation link format: WEB_APP_URL?email=USER_EMAIL&token=TOKEN
+
+Unsubscribe link format: WEB_APP_URL?action=unsubscribe&email=USER_EMAIL
+
+
+
 
