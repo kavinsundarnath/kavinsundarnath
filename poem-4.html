@@ -3,20 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Poem 4 — Tamil</title>
+  <title>மகிழ்ச்சி</title>
+
+  <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* ---------- Base ---------- */
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-
     body{
       margin: 0;
       font-family: ui-serif, Georgia, "Times New Roman", serif;
-      color: #111;
     }
 
-    /* ---------- Full background ---------- */
     .poem-bg{
       min-height: 100vh;
       background:
@@ -25,70 +21,74 @@
           rgba(255,255,255,0.30)
         ),
         url("poem-4-image.jpg") center / cover no-repeat fixed;
-      padding: 64px 16px 90px;
+      padding: 64px 16px 96px;
     }
 
-    /* ---------- Back link ---------- */
+    .poem-card{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 44px 36px;
+
+      text-align: center;
+
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      border-radius: 30px;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.18);
+    }
+
     .back-link{
       display: inline-block;
-      margin-bottom: 18px;
-      font-weight: 800;
+      margin-bottom: 22px;
+      font-weight: 700;
       text-decoration: underline;
       text-underline-offset: 4px;
       color: inherit;
     }
 
-    /* ---------- Readable poem card (like poem-1) ---------- */
-    .poem-card{
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 36px 32px;
-
-      text-align: center;
-
-      /* KEY FIX: ~50% opacity */
-      background: rgba(255,255,255,0.50);
-
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-
-      border-radius: 28px;
-      box-shadow: 0 28px 70px rgba(0,0,0,0.20);
-    }
-
     .poem-title{
-      margin: 12px 0 22px;
       font-size: 30px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+      margin: 8px 0 28px;
+      font-weight: 700;
     }
 
     .poem-text{
       white-space: pre-wrap;
       line-height: 1.9;
       font-size: 17px;
-      font-weight: 600;     /* Tamil readability */
-      text-align: center;
+      font-weight: 500;
       margin: 0;
       color: #111;
     }
 
     .poem-sign{
-      margin-top: 28px;
-      font-weight: 800;
-      text-align: center;
+      margin-top: 32px;
+      font-weight: 700;
+      font-size: 16px;
     }
 
-    /* ---------- Mobile ---------- */
+    .poem-date{
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+
     @media (max-width: 600px){
-      .poem-card{ padding: 28px 20px; }
-      .poem-title{ font-size: 26px; }
-      .poem-text{ font-size: 16px; }
+      .poem-card{
+        padding: 32px 22px;
+      }
+      .poem-text{
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <main class="poem-bg">
     <section class="poem-card">
 
@@ -96,31 +96,70 @@
 
       <h1 class="poem-title">மகிழ்ச்சி!</h1>
 
-      <pre class="poem-text">மகிழ்ச்சி என்பது துக்கத்தின் தருணமையோது அறையெரியும் பரவி இளகைக்கூட வெள்ளருமீம்.
+      <pre class="poem-text">
+மகிழ்ச்சி என்பது தீக்குச்சியின் ஒளியைபோலது
+அறையெங்கும் பரவிய இருளைக்கூட வென்றுவிடும்.
 
-வரட்சியில் மகிழ்ச்சியை காண இயலுமா?
+வறட்சியில் மகிழ்ச்சியை காண இயலுமா?
 
-பாலைவனிலும் நீரில்லா இடையிலும் சார் அடக்கமும் தரும் மகிழ்ச்சி.
+பாலையிலும் நீரில்லா ஓடையிலும்
+சாரல் அடிக்கும் தருணம் மகிழ்ச்சி.
 
-மந்தமான நாட்களில் வியக்கமுட்டும் நிகழ்வுகள் மகிழ்ச்சி.
+மந்தமான நாட்களிலே
+வியக்கமூட்டும் நிகழ்வுகள் மகிழ்ச்சி.
 
-எட்டா தூரம் சென்றாலும் நெஞ்சை ஈர்க்கும் நேசங்களின் நினைவுகள் மகிழ்ச்சி.
+எட்டா தூரம் சென்றாலும்
+நெஞ்சை ஈர்க்கும் நேசங்களின் நினைவுகள் மகிழ்ச்சி.
 
-காத்தால் அறியாத உணர்வுகள் ஓர் குடும்பமாய் இணையும் காலம் மகிழ்ச்சி.
+காலத்தால் அழியாத உணர்வுகள்
+ஓர் குடும்பமாய் இணையும் காலம் மகிழ்ச்சி.
 
-மழையும் பொழுதும் பண்ணமிட்டு வண்ணம் பெறுகி அகமரற இளையதிர்க்காலும் மகிழ்ச்சி.
+மறையும் பொழுதும்
+பன்மடங்கு வண்ணம் பெருகி
+அழகூற்றும் இலையுதிர்காலம் மகிழ்ச்சி.
 
-உயிர்ந்தாலும் காலம் தளராது மனதிற்கு மானவிடும் பூவின் மொட்டாவது மகிழ்ச்சி.
+உதிர்ந்தாலும் காலம் தவறாது
+மரத்திற்கு மாலையிடும்
+பூவின் மொட்டவிழ்தல் மகிழ்ச்சி.
 
-வாழ்க்கை எனது புத்தத்தில் உணர்வு ஊற்றும் அன்பு மகிழ்ச்சி.
+வாழ்க்கை எனும் யுத்தத்தில்
+உணர்வு ஊற்றும் அன்பு மகிழ்ச்சி.
 
-சரமாரியாக தமரிய பொழுதில் இறைவனின் கருணை மகிழ்ச்சி.
+சரமாரியாக தடுமாறிய பொழுதில்
+இறைவனின் கருணை மகிழ்ச்சி.
 
-மேகிய பொழுதில் பயணங்கள் தொடர்ந்தாலும் அவ்வப்போது செல்வில் பாயும் தென்றலும் மகிழ்ச்சி.</pre>
+மேற்கிய மொழியில் பயணங்கள் தொடர்ந்தாலும்
+அவ்வப்பொழுது செவியில் பாயும்
+செந்தமிழ் மகிழ்ச்சி.
 
-      <p class="poem-sign">- Kavin -<br>31 Dec 2019</p>
+படிக்கும் வாசகத்தின் பொருள் புரிதல்
+எம்மொழியிலும் மகிழ்ச்சி.
+
+கேளிக்கையின் இன்பம் தவிர்த்து
+அறத்தால் வரும் இன்பம் நாடும்
+மனம் மகிழ்ச்சி.
+
+கண்களை குளிரூற்றினாலும்
+சிற்றின்ப இச்சை நஞ்சமே என்று
+தவிர்க்கும் ஞானம் மகிழ்ச்சி.
+
+தவறை திருத்த என்னும் ஏக்கம் மகிழ்ச்சி,
+எட்டா கனியையும் பறிக்கும் வீரம் மகிழ்ச்சி.
+
+என்னை நம்பினால் போதும் என்று
+நிம்மதியின் துவக்கத்தை காண்பித்த
+இயேசு நாதரின் சாசனம் மகிழ்ச்சி.
+
+இடுக்கண் காலத்திற்கு
+நாட்குறித்த அகமும் முடிவும் இல்லா
+திரியேக நாதருக்கு போற்றி போற்றி.
+      </pre>
+
+      <p class="poem-sign">- கவின் -</p>
+      <p class="poem-date">27 June 2021</p>
 
     </section>
   </main>
+
 </body>
 </html>
