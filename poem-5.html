@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanksgiving</title>
 
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body{
+      margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      color: #111;
+    }
+
+    /* Full background */
+    .poem-bg{
+      min-height: 100vh;
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.45),
+          rgba(255,255,255,0.45)
+        ),
+        url("poem-5-image.jpg") center / cover no-repeat fixed;
+      padding: 64px 20px 96px;
+    }
+
+    /* Centered poem block (NO box) */
+    .poem-page{
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .back-link{
+      display: inline-block;
+      margin-bottom: 28px;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      color: inherit;
+    }
+
+    .poem-title{
+      font-size: 32px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .poem-text{
+      white-space: pre-wrap;
+      line-height: 1.9;
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .acrostic{
+      color: #c40000;
+      font-weight: 800;
+    }
+
+    .poem-sign{
+      margin-top: 36px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .poem-date{
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px){
+      .poem-text{
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="poem-bg">
+    <section class="poem-page">
+
+      <a class="back-link" href="poems.html">← Back to Poems</a>
+
+      <h1 class="poem-title">Thanksgiving</h1>
+
+      <pre class="poem-text">
+<span class="acrostic">T</span>housand words can’t describe
+<span class="acrostic">H</span>is majestic love and eternal joy.
+
+<span class="acrostic">A</span> thankful heart makes one smile
+<span class="acrostic">N</span>ovice turns wise in a fiery trial.
+
+<span class="acrostic">K</span>indness and mercy gleams beyond horizon
+<span class="acrostic">S</span>aving a far-gone can be a burden.
+
+<span class="acrostic">G</span>rateful, I got pulled to the shore
+<span class="acrostic">I</span> thank God, who is in control.
+
+<span class="acrostic">V</span>ersatile and profound are your plans
+<span class="acrostic">I</span>nevitable victory is brought by your hand.
+
+<span class="acrostic">N</span>o power can obscure your glory
+<span class="acrostic">G</span>lad, I am gifted a role in the grand story.
+      </pre>
+
+      <p class="poem-sign">- Kavin -</p>
+      <p class="poem-date">26 Nov 2020</p>
+
+    </section>
+  </main>
+
+</body>
+</html>
