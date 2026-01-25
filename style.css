@@ -1,3 +1,5 @@
+/* style.css (FULL) */
+
 /* ---------- Base ---------- */
 *{ box-sizing: border-box; }
 
@@ -36,22 +38,27 @@ body{
   opacity: 0.8;
 }
 
-/* Tagline */
+/* Tagline: brighter/lighter like Featured, but same size/weight feel as nav */
 .tagline{
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #1f4fd8;
+  margin-top: 12px;
+  font-size: 18px;       /* similar readability to nav */
+  font-weight: 800;      /* matches nav boldness */
+  color: #444;           /* brighter/lighter dark grey */
+  letter-spacing: 0.2px;
 }
 
 /* ---------- Layout ---------- */
-.tagline{
-  margin-top: 12px;
-  font-size: 18px;        
-  font-weight: 800;       
-  color: #2b2b2b;         
-  letter-spacing: 0.2px;
+.layout{
+  display: flex;
+  gap: 60px;
+  padding: 40px;
+  align-items: center;
+  justify-content: space-between;
 }
+
+/* Explicit desktop order */
+.featured{ order: 1; }
+.circle-nav{ order: 2; }
 
 /* ---------- Featured ---------- */
 .featured{
@@ -60,7 +67,7 @@ body{
 
 .featured h2{
   font-size: 30px;
-  margin-bottom: 16px;
+  margin: 0 0 16px;
 }
 
 .featured-card{
@@ -81,6 +88,11 @@ body{
   transition: opacity 280ms ease, transform 280ms ease;
 }
 
+.featured-link:hover{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .featured-link.is-fading{
   opacity: 0;
   transform: translateY(6px);
@@ -91,6 +103,7 @@ body{
   position: relative;
   width: 360px;
   height: 360px;
+  flex-shrink: 0;
 }
 
 .nav-circle{
@@ -99,18 +112,24 @@ body{
   height: 96px;
   border-radius: 50%;
   background: rgba(255,255,255,0.92);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-weight: 800;
   text-decoration: none;
   color: #000;
+
   box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-  transition: transform 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .nav-circle:hover{
   transform: scale(1.06);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
 }
 
 /* Positions */
@@ -120,13 +139,28 @@ body{
 .c-hope{ top:50%; left:0; transform:translate(0,-50%); }
 .c-poems{ top:50%; left:50%; transform:translate(-50%,-50%); }
 
+/* Keep base position on hover (scale only, no jump) */
+.c-about:hover{ transform:translate(-50%,0) scale(1.06); }
+.c-articles:hover{ transform:translate(0,-50%) scale(1.06); }
+.c-projects:hover{ transform:translate(-50%,0) scale(1.06); }
+.c-hope:hover{ transform:translate(0,-50%) scale(1.06); }
+.c-poems:hover{ transform:translate(-50%,-50%) scale(1.06); }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 900px){
   .layout{
     flex-direction: column;
     text-align: center;
+    gap: 26px;
+    padding: 26px 16px 40px;
   }
 
+  /* Explicit mobile order: circles first, featured below */
   .circle-nav{ order: 1; }
   .featured{ order: 2; }
+}
+
+/* Optional: slightly smaller tagline on small phones */
+@media (max-width: 600px){
+  .tagline{ font-size: 16px; }
 }
