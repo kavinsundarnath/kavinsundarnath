@@ -7,52 +7,29 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* Full-page poem background */
-    body{ margin: 0; }
+    body{
+      margin: 0;
+    }
 
+    /* Full-page background */
     .poem-bg{
       min-height: 100vh;
       background:
         linear-gradient(
-          rgba(255,255,255,0.55),
-          rgba(255,255,255,0.55)
+          rgba(255,255,255,0.35),
+          rgba(255,255,255,0.35)
         ),
         url("poem-2-image.jpg") center / cover no-repeat fixed;
-      padding: 64px 16px 80px;
+      padding: 70px 20px 90px;
+      display: flex;
+      justify-content: center;
     }
 
-    /* Floating poem card */
-    .poem-card{
+    /* Text container (NO box) */
+    .poem-content{
       max-width: 760px;
-      margin: 0 auto;
-      padding: 36px 32px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.60);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 28px 70px rgba(0,0,0,0.20);
-    }
-
-    .poem-title{
-      margin: 10px 0 18px;
-      font-size: 28px;
-      letter-spacing: 0.9px;
-      text-transform: none; /* keep title case */
-      text-align: center;
-    }
-
-    .poem-text{
-      white-space: pre-wrap;
-      line-height: 1.75;
-      margin: 0;
-      font-size: 16px;
-    }
-
-    .poem-sign{
-      margin-top: 24px;
-      font-weight: 700;
-      text-align: right;
-      line-height: 1.6;
+      color: #161616;
+      text-shadow: 0 2px 10px rgba(255,255,255,0.85);
     }
 
     .back-link{
@@ -60,12 +37,43 @@
       margin-bottom: 18px;
       font-weight: 700;
     }
+
+    .poem-title{
+      text-align: center;
+      font-size: 30px;
+      margin: 10px 0 22px;
+      letter-spacing: 0.8px;
+    }
+
+    .poem-text{
+      white-space: pre-wrap;
+      line-height: 1.75;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .poem-sign{
+      margin-top: 26px;
+      font-weight: 700;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* Mobile readability */
+    @media (max-width: 640px){
+      .poem-bg{
+        padding: 56px 16px 70px;
+      }
+      .poem-title{
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <main class="poem-bg">
-    <section class="poem-card">
+    <section class="poem-content">
       <a class="text-link back-link" href="poems.html">← Back to Poems</a>
 
       <h3 class="poem-title">An Uncertain Life</h3>
@@ -90,7 +98,11 @@ Except that the divine love on the cross urges you to hold.
 How can one sit tight in a train wreck and not be mad?
 If you can fully read till here, after all your patience isn’t bad.</pre>
 
-      <p class="poem-sign">Keep smiling!<br>- Kavin -<br>15 Feb 2021</p>
+      <p class="poem-sign">
+        Keep smiling!<br>
+        - Kavin -<br>
+        15 Feb 2021
+      </p>
     </section>
   </main>
 </body>
