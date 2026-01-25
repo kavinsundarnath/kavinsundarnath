@@ -7,19 +7,23 @@
 
   <style>
     /* ---------- Base ---------- */
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+
     body{
       margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
       color: #111;
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
     }
 
-    /* ---------- Full-page poem background ---------- */
+    /* ---------- Full background ---------- */
     .poem-bg{
       min-height: 100vh;
       background:
-        linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)),
+        linear-gradient(
+          rgba(255,255,255,0.30),
+          rgba(255,255,255,0.30)
+        ),
         url("poem-4-image.jpg") center / cover no-repeat fixed;
       padding: 64px 16px 90px;
     }
@@ -34,7 +38,7 @@
       color: inherit;
     }
 
-    /* ---------- Super-transparent poem card (centered) ---------- */
+    /* ---------- Readable poem card (like poem-1) ---------- */
     .poem-card{
       max-width: 860px;
       margin: 0 auto;
@@ -42,12 +46,14 @@
 
       text-align: center;
 
-      background: rgba(255,255,255,0.16); /* super transparent */
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      /* KEY FIX: ~50% opacity */
+      background: rgba(255,255,255,0.50);
 
-      border-radius: 26px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      border-radius: 28px;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.20);
     }
 
     .poem-title{
@@ -61,9 +67,10 @@
       white-space: pre-wrap;
       line-height: 1.9;
       font-size: 17px;
-      font-weight: 600;   /* Tamil readability */
+      font-weight: 600;     /* Tamil readability */
       text-align: center;
       margin: 0;
+      color: #111;
     }
 
     .poem-sign{
@@ -87,10 +94,8 @@
 
       <a class="back-link" href="poems.html">← Back to Poems</a>
 
-      <!-- Change title if needed -->
       <h1 class="poem-title">மகிழ்ச்சி!</h1>
 
-      <!-- Paste your Tamil poem text here -->
       <pre class="poem-text">மகிழ்ச்சி என்பது துக்கத்தின் தருணமையோது அறையெரியும் பரவி இளகைக்கூட வெள்ளருமீம்.
 
 வரட்சியில் மகிழ்ச்சியை காண இயலுமா?
@@ -113,7 +118,6 @@
 
 மேகிய பொழுதில் பயணங்கள் தொடர்ந்தாலும் அவ்வப்போது செல்வில் பாயும் தென்றலும் மகிழ்ச்சி.</pre>
 
-      <!-- Change author/date if needed -->
       <p class="poem-sign">- Kavin -<br>31 Dec 2019</p>
 
     </section>
