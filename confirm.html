@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirm Subscription</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background: linear-gradient(
+        135deg,
+        #f3c6a8 0%,
+        #efe2d8 38%,
+        #e6e9f5 55%,
+        #b7c6ee 78%,
+        #8fa6e8 100%
+      );
+    }
+    .card{
+      max-width:640px;
+      width:100%;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+      text-align:center;
+    }
+    h1{ margin:0 0 10px; font-size:28px; }
+    p{ margin:0; font-size:16px; line-height:1.5; }
+    a{ color:#000; font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="title">Confirming…</h1>
+    <p id="text">Please wait.</p>
+    <p style="margin-top:14px;"><a href="index.html">Back to Home</a></p>
+  </div>
+
+  <script>
+    const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+    const title = document.getElementById("title");
+    const text = document.getElementById("text");
+
+    const params = new URLSearchParams(location.search);
+    const email = params.get("email");
+    const token = params.get("token");
+
+    async function run(){
+      if(!email || !token){
+        title.textContent = "Invalid link";
+        text.textContent = "This confirmation link is missing information.";
+        return;
+      }
+
+      try{
+        const url = `${SCRIPT_URL}?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if(data.ok){
+          title.textContent = "You’re subscribed ✅";
+          text.textContent = "Thanks — your email is confirmed.";
+        }else{
+          title.textContent = "Could not confirm";
+          text.textContent = data.error || "Something went wrong.";
+        }
+      }catch(e){
+        title.textContent = "Error";
+        text.textContent = "Something went wrong while confirming.";
+      }
+    }
+
+    run();
+  </script>
+</body>
+</html>
