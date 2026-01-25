@@ -7,100 +7,101 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    body{
-      margin: 0;
+    body{ margin:0; }
+
+    .poem-bg{
       min-height: 100vh;
       background:
-        linear-gradient(
-          rgba(255,255,255,0.45),
-          rgba(255,255,255,0.45)
-        ),
+        linear-gradient(rgba(255,255,255,0.40), rgba(255,255,255,0.40)),
         url("poem-5-image.jpg") center / cover no-repeat fixed;
-      color: rgba(0,0,0,0.85); /* ~20% brighter than before */
+      padding: 64px 16px 80px;
     }
 
-    .poem-wrap{
+    .poem-card{
       max-width: 900px;
-      padding: 60px 24px 80px 64px; /* push content left */
+      margin: 0 auto;
+      padding: 28px 32px 40px;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
     }
 
     .back-link{
       display: inline-block;
-      margin-bottom: 20px;
-      font-weight: 700;
-      text-decoration: none;
-      color: rgba(0,0,0,0.9);
+      margin-bottom: 18px;
+      font-weight: 800;
+      color: #111;
+      text-decoration: underline;
     }
 
     .poem-title{
-      font-size: 34px;
-      margin: 10px 0 28px;
-      font-weight: 800;
+      margin: 10px 0 18px;
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      text-align: left;
+      color: #111;
     }
 
+    /* ✅ 50% “brighter” text (lighter color) */
     .poem-text{
       white-space: pre-wrap;
-      line-height: 1.9;
-      font-size: 18px;
-      font-weight: 600;
+      line-height: 1.75;
       margin: 0;
-    }
+      font-size: 18px;
+      font-weight: 700;
+      text-align: left;
 
-    .poem-text .acro{
-      color: #c00000;
-      font-weight: 900;
+      /* before: near #111 / black
+         now: lighter gray => “brighter” look */
+      color: rgba(0,0,0,0.55);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.35);
     }
 
     .poem-sign{
-      margin-top: 40px;
+      margin-top: 28px;
       font-weight: 800;
+      text-align: left;
+      color: rgba(0,0,0,0.60);
     }
 
-    /* Mobile tuning */
-    @media (max-width: 700px){
-      .poem-wrap{
-        padding: 40px 20px 70px;
-      }
-      .poem-title{
-        font-size: 28px;
-      }
-      .poem-text{
-        font-size: 16px;
-      }
+    /* Optional: make the red initials pop more */
+    .poem-text .acrostic{
+      color: rgba(180,0,0,0.95);
+      font-weight: 900;
     }
   </style>
 </head>
 
 <body>
-  <main class="poem-wrap">
-    <a class="back-link" href="poems.html">← Back to Poems</a>
+  <main class="poem-bg">
+    <section class="poem-card">
 
-    <h1 class="poem-title">Thanksgiving</h1>
+      <a class="back-link" href="poems.html">← Back to Poems</a>
 
-    <pre class="poem-text">
-<span class="acro">T</span>housand words can’t describe
-<span class="acro">H</span>is majestic love and eternal joy.
+      <h1 class="poem-title">Thanksgiving</h1>
 
-<span class="acro">A</span> thankful heart makes one smile
-<span class="acro">N</span>ovice turns wise in a fiery trial.
+      <pre class="poem-text"><span class="acrostic">T</span>housand words can’t describe
+<span class="acrostic">H</span>is majestic love and eternal joy.
+<span class="acrostic">A</span> thankful heart makes one smile
+<span class="acrostic">N</span>ovice turns wise in a fiery trial.
 
-<span class="acro">K</span>indness and mercy gleams beyond horizon
-<span class="acro">S</span>aving a far-gone can be a burden.
+<span class="acrostic">K</span>indness and mercy gleams beyond horizon
+<span class="acrostic">S</span>aving a far-gone can be a burden.
 
-<span class="acro">G</span>rateful, I got pulled to the shore
-<span class="acro">I</span> thank God, who is in control.
+<span class="acrostic">G</span>rateful, I got pulled to the shore
+<span class="acrostic">I</span> thank God, who is in control.
 
-<span class="acro">V</span>ersatile and profound are your plans
-<span class="acro">I</span>nevitable victory is brought by your hand.
+<span class="acrostic">V</span>ersatile and profound are your plans
+<span class="acrostic">I</span>nevitable victory is brought by your hand.
 
-<span class="acro">N</span>o power can obscure your glory
-<span class="acro">G</span>lad, I am gifted a role in the grand story.
-    </pre>
+<span class="acrostic">N</span>o power can obscure your glory
+<span class="acrostic">G</span>lad, I am gifted a role in the grand story.</pre>
 
-    <p class="poem-sign">
-      – Kavin –<br>
-      26 Nov 2020
-    </p>
+      <p class="poem-sign">- Kavin -<br>26 Nov 2020</p>
+
+    </section>
   </main>
 </body>
 </html>
