@@ -12,24 +12,22 @@
     }
 
     /* FULL BACKGROUND */
-    .poem-bg{
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(255,255,255,0.40), rgba(255,255,255,0.40)),
-        url("poem-5-image.jpg") center / cover no-repeat fixed;
+.poem-bg{
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(255,255,255,0.40), rgba(255,255,255,0.40)),
+    url("poem-5-image.jpg") center / cover no-repeat fixed;
 
-      padding: 64px 6% 90px;
-
-      /* 🔑 move content right */
-      display: flex;
-      justify-content: flex-end;
-    }
+  padding: 64px 4% 90px;   /* less right padding */
+  display: flex;
+  justify-content: flex-end;
+}
 
     /* CONTENT AREA */
-    .poem-wrap{
-      max-width: 820px;
-      width: 100%;
-    }
+.poem-wrap{
+  max-width: 760px;   /* slightly narrower */
+  margin-right: 2%;   /* 🔑 pushes it further right */
+}
 
     .back-link{
       display: inline-block;
