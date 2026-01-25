@@ -1,3 +1,4 @@
+<!-- index.html (FULL) -->
 <!DOCTYPE html>
 <html lang="ta">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kavin Sundarnath</title>
 
-  <!-- THIS MUST MATCH FILE NAME EXACTLY -->
+  <!-- MUST match your file name exactly (you have style.css) -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,24 +18,22 @@
     <span class="english">(Knowledge grows through questioning)</span>
   </div>
 
-  <div class="tagline">
-    If it ain't hand-written, it ain't here!
-  </div>
+  <div class="tagline">If it ain't hand-written, it ain't here!</div>
 </header>
 
 <main class="layout">
 
-  <!-- Desktop: Featured left | Mobile: circle first -->
-  <section class="featured">
+  <!-- Featured (desktop left; mobile below circles via CSS order) -->
+  <section class="featured" aria-label="Featured links">
     <h2>Featured</h2>
     <div class="featured-card">
-      <a id="featuredLink" class="featured-link"
-         href="https://kavinsundarnath.com/poem-1.html">
+      <a id="featuredLink" class="featured-link" href="https://kavinsundarnath.com/poem-1.html">
         Discernment
       </a>
     </div>
   </section>
 
+  <!-- Circle Nav -->
   <nav class="circle-nav" aria-label="Site navigation">
     <a class="nav-circle c-about" href="about.html">About</a>
     <a class="nav-circle c-articles" href="articles.html">Articles</a>
@@ -48,7 +47,7 @@
 <script>
   const featuredItems = [
     { title: "Discernment", url: "https://kavinsundarnath.com/poem-1.html" },
-    { title: "Spiritual Worship", url: "https://kavinsundarnath.com/article-1.html" },
+    { title: "Joyful Encourager", url: "https://kavinsundarnath.com/article-1.html" },
     { title: "Why Hope?", url: "https://kavinsundarnath.com/hope.html" }
   ];
 
