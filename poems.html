@@ -15,78 +15,93 @@
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       color: #000;
+
+      /* CSS-only linear background */
+      background: linear-gradient(
+        135deg,
+        #8fa6e8 0%,
+        #eef1ff 45%,
+        #ffffff 50%,
+        #eef1ff 55%,
+        #8fa6e8 100%
+      );
+
+      min-height: 100vh;
     }
 
-    /* Background */
-    .poems-bg {
-      min-height: 100vh;
-      background: 
-        linear-gradient(
-          rgba(255,255,255,0.35),
-          rgba(255,255,255,0.35)
-        ),
-        url("poemsPageImage.jpg") center / cover no-repeat fixed;
+    /* Layout */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
       padding: 48px 24px 80px;
     }
 
     /* Back link */
-    .back-link {
-      display: inline-block;
-      margin-bottom: 48px;
-      font-weight: 700;
+    .back {
+      font-size: 14px;
+      font-weight: 600;
       text-decoration: none;
       color: #000;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+
+    .back:hover {
+      text-decoration: underline;
     }
 
     /* Title */
-    .page-title {
+    h1 {
       text-align: center;
       font-size: 44px;
-      margin-bottom: 64px;
-      letter-spacing: 0.5px;
+      margin: 0 0 48px;
     }
 
-    /* Poems list */
-    .poems-list {
-      max-width: 600px;
-      margin: 0 auto;
+    /* Poem list */
+    .poems {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding-left: 80px;
     }
 
-    .poems-list a {
-      display: block;
+    .poems a {
+      font-size: 30px;
+      font-weight: 700;
       text-decoration: none;
       color: #000;
-      font-size: 26px;
-      font-weight: 700;
-      margin: 28px 0;
       transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
-    .poems-list a:hover {
-      opacity: 0.85;
+    .poems a:hover {
       transform: translateX(4px);
+      opacity: 0.85;
     }
 
-    /* Mobile tweaks */
+    /* Mobile */
     @media (max-width: 600px) {
-      .page-title {
+      h1 {
         font-size: 36px;
       }
 
-      .poems-list a {
-        font-size: 22px;
+      .poems {
+        padding-left: 24px;
+      }
+
+      .poems a {
+        font-size: 26px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="poems-bg">
-    <a class="back-link" href="index.html">← Back to Home</a>
+  <main class="page">
+    <a class="back" href="index.html">← Back to Home</a>
 
-    <h1 class="page-title">Poems</h1>
+    <h1>Poems</h1>
 
-    <nav class="poems-list">
+    <nav class="poems">
       <a href="poem-1.html">Discernment</a>
       <a href="poem-2.html">An Uncertain Life</a>
       <a href="poem-3.html">Fire of My Heart</a>
