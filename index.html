@@ -4,125 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kavin Sundarnath</title>
-
-  <style>
-    body{
-      margin: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
-      /* 10% less transparent than before (was 0.45, now 0.35) */
-      background:
-        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
-        url("mainPageImage.jpg") center / cover no-repeat fixed;
-    }
-
-    /* HEADER */
-    .top{
-      text-align: center;
-      padding: 24px 16px 12px;
-    }
-    .quote{
-      display: inline-block;
-      padding: 16px 28px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.8);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
-    }
-    .tamil{
-      display: block;
-      font-size: 26px;
-      font-weight: 800;
-    }
-    .english{
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    /* LAYOUT */
-    .layout{
-      display: flex;
-      gap: 60px;
-      padding: 40px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* FEATURED */
-    .featured{
-      max-width: 420px;
-    }
-    .featured h2{
-      font-size: 30px;
-      margin-bottom: 16px;
-    }
-    .featured-card{
-      padding: 22px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 44px rgba(0,0,0,0.2);
-      font-weight: 700;
-    }
-
-    /* PERFECT CIRCLE NAV */
-    .circle-nav{
-      position: relative;
-      width: 360px;
-      height: 360px;
-      flex-shrink: 0;
-    }
-
-    .nav-circle{
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.92);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #000;
-      font-weight: 800;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-
-      /* IMPORTANT: prevent “moving” feeling */
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      transform-origin: center;
-      will-change: transform;
-    }
-
-    /* Only a slight enlarge (no translate jump) */
-    .nav-circle:hover{
-      transform: scale(1.06);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
-    }
-
-    /* TRUE CIRCLE POSITIONS */
-    .c-about   { top: 0; left: 50%; transform: translate(-50%, 0); }
-    .c-articles{ top: 50%; right: 0; transform: translate(0, -50%); }
-    .c-projects{ bottom: 0; left: 50%; transform: translate(-50%, 0); }
-    .c-hope    { top: 50%; left: 0; transform: translate(0, -50%); }
-    .c-poems   { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-
-    /* Keep the base position on hover (scale only) */
-    .c-about:hover    { transform: translate(-50%, 0) scale(1.06); }
-    .c-articles:hover { transform: translate(0, -50%) scale(1.06); }
-    .c-projects:hover { transform: translate(-50%, 0) scale(1.06); }
-    .c-hope:hover     { transform: translate(0, -50%) scale(1.06); }
-    .c-poems:hover    { transform: translate(-50%, -50%) scale(1.06); }
-
-    /* MOBILE */
-    @media (max-width: 900px){
-      .layout{
-        flex-direction: column;
-        text-align: center;
-      }
-      .circle-nav{
-        margin-bottom: 40px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -132,24 +14,60 @@
     <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
     <span class="english">(Knowledge grows through questioning)</span>
   </div>
+
+  <div class="tagline">If it ain't hand-written, it ain't here!</div>
 </header>
 
 <main class="layout">
 
-  <section class="featured">
-    <h2>Featured</h2>
-    <div class="featured-card">Coming soon</div>
-  </section>
-
+  <!-- Circle nav FIRST in HTML is fine; desktop layout still shows Featured on left because of flex order defaults -->
   <nav class="circle-nav" aria-label="Site navigation">
     <a class="nav-circle c-about" href="about.html">About</a>
     <a class="nav-circle c-articles" href="articles.html">Articles</a>
     <a class="nav-circle c-projects" href="#projects">Projects</a>
-  <a class="nav-circle c-hope" href="hope.html">Why Hope?</a>
+    <a class="nav-circle c-hope" href="hope.html">Why Hope?</a>
     <a class="nav-circle c-poems" href="poems.html">Poems</a>
   </nav>
 
+  <section class="featured" aria-label="Featured links">
+    <h2>Featured</h2>
+    <div class="featured-card">
+      <a id="featuredLink" class="featured-link" href="https://kavinsundarnath.com/poem-1.html">
+        Discernment
+      </a>
+    </div>
+  </section>
+
 </main>
+
+<script>
+  const featuredItems = [
+    { title: "Discernment", url: "https://kavinsundarnath.com/poem-1.html" },
+    { title: "Spiritual Worship", url: "https://kavinsundarnath.com/article-1.html" },
+    { title: "Why Hope?", url: "https://kavinsundarnath.com/hope.html" }
+  ];
+
+  const linkEl = document.getElementById("featuredLink");
+  let i = 0;
+
+  function showNext(){
+    i = (i + 1) % featuredItems.length;
+
+    // fade out
+    linkEl.classList.add("is-fading");
+
+    setTimeout(() => {
+      linkEl.textContent = featuredItems[i].title;
+      linkEl.href = featuredItems[i].url;
+
+      // fade in
+      linkEl.classList.remove("is-fading");
+    }, 280);
+  }
+
+  // Rotate every 3 seconds
+  setInterval(showNext, 3000);
+</script>
 
 </body>
 </html>
