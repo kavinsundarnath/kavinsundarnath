@@ -15,12 +15,17 @@ body{
   position: fixed;
   inset: 0;
   z-index: -2;
+
+  /* Image background with soft linear overlay */
   background:
-    radial-gradient(900px 560px at 18% 18%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
-    radial-gradient(900px 560px at 82% 20%, rgba(255,210,220,0.70), rgba(255,255,255,0) 62%),
-    radial-gradient(1100px 720px at 25% 92%, rgba(185,220,255,0.72), rgba(255,255,255,0) 64%),
-    linear-gradient(135deg, #ffffff 0%, #f7fbff 45%, #fff3f6 100%);
+    linear-gradient(
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.45)
+    ),
+    url("mainPageImage.jpg") center / cover no-repeat;
+
   filter: saturate(1.05);
+  transform: translateZ(0); /* performance hint */
 }
 
 /* ---------- Header ---------- */
@@ -164,7 +169,7 @@ body{
 .c4{ transform: translate(-50%, -50%) rotate(210deg) translate(var(--r)) rotate(-210deg); }
 .c5{ transform: translate(-50%, -50%) rotate(230deg) translate(var(--r)) rotate(-230deg); }
 
-/* hover/focus: SCALE ONLY THE BUBBLE */
+/* hover/focus: scale only */
 .nav-circle:hover .bubble,
 .nav-circle:focus-visible .bubble{
   transform: translate(-50%, -50%) scale(1.08);
