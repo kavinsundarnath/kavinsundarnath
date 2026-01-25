@@ -4,11 +4,96 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Articles</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #000;
+
+      /* Same peach → cream → strong blue (NO pink) */
+      background: linear-gradient(
+        135deg,
+        #f3c6a8 0%,     /* warm peach */
+        #efe2d8 38%,    /* creamy neutral */
+        #e6e9f5 55%,    /* cool transition */
+        #b7c6ee 78%,    /* noticeable blue */
+        #8fa6e8 100%    /* strong blue bottom-right */
+      );
+
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .top {
+      padding: 32px 24px 12px;
+      text-align: center;
+    }
+
+    .quote {
+      font-weight: 700;
+    }
+
+    .quote .tamil {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .quote .english {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Layout */
+    .layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    .section p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .text-link {
+      text-decoration: none;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .section h3 {
+        font-size: 26px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="bg"></div>
 
   <header class="top">
     <div class="quote" role="note" aria-label="Site quote">
@@ -19,7 +104,7 @@
 
   <main class="layout">
     <section class="section">
-      <p><a class="text-link" href="index.html">← Back to home</a></p>
+      <p><a class="text-link" href="index.html">← Back to Home</a></p>
       <h3>Articles</h3>
       <p>Click an article to open it.</p>
     </section>
@@ -39,5 +124,6 @@
       <p>Short description (optional).</p>
     </section>
   </main>
+
 </body>
 </html>
