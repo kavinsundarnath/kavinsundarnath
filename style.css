@@ -135,14 +135,14 @@ body{
 /* Positions */
 .c-about{ top:0; left:50%; transform:translate(-50%,0); }
 .c-articles{ top:50%; right:0; transform:translate(0,-50%); }
-.c-projects{ bottom:0; left:50%; transform:translate(-50%,0); }
+.c-minis{ bottom:0; left:50%; transform:translate(-50%,0); }
 .c-hope{ top:50%; left:0; transform:translate(0,-50%); }
 .c-poems{ top:50%; left:50%; transform:translate(-50%,-50%); }
 
 /* Keep base position on hover (scale only, no jump) */
 .c-about:hover{ transform:translate(-50%,0) scale(1.06); }
 .c-articles:hover{ transform:translate(0,-50%) scale(1.06); }
-.c-projects:hover{ transform:translate(-50%,0) scale(1.06); }
+.c-minis:hover{ transform:translate(-50%,0) scale(1.06); }
 .c-hope:hover{ transform:translate(0,-50%) scale(1.06); }
 .c-poems:hover{ transform:translate(-50%,-50%) scale(1.06); }
 
