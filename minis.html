@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minis</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #000;
+
+      /* Same peach → cream → strong blue */
+      background: linear-gradient(
+        135deg,
+        #f3c6a8 0%,
+        #efe2d8 38%,
+        #e6e9f5 55%,
+        #b7c6ee 78%,
+        #8fa6e8 100%
+      );
+
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .top {
+      padding: 32px 24px 12px;
+      text-align: center;
+    }
+
+    .quote {
+      font-weight: 700;
+    }
+
+    .quote .tamil {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .quote .english {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Page layout */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* Back link */
+    .back {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    /* Title */
+    h1 {
+      text-align: center;
+      font-size: 44px;
+      margin: 0 0 48px;
+    }
+
+    /* Mini list */
+    .minis {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding-left: 80px;
+    }
+
+    .minis a {
+      font-size: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #000;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .minis a:hover {
+      transform: translateX(4px);
+      opacity: 0.85;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .minis {
+        padding-left: 24px;
+      }
+
+      .minis a {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+    <a class="back" href="index.html">← Back to Home</a>
+
+    <h1>Minis</h1>
+
+    <nav class="minis">
+      <a href="mini-1.html">Mini 1</a>
+      <a href="mini-2.html">Mathew 6:27</a>
+    </nav>
+  </main>
+
+</body>
+</html>
