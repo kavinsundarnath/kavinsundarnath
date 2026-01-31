@@ -34,15 +34,17 @@
 
     .quote {
       font-weight: 700;
+      max-width: 720px;
+      margin: 0 auto;
     }
 
-    .quote .tamil {
+    .quote .verse {
       display: block;
-      font-size: 20px;
-      margin-bottom: 4px;
+      font-size: 18px;
+      margin-bottom: 6px;
     }
 
-    .quote .english {
+    .quote .ref {
       font-size: 14px;
       opacity: 0.8;
     }
@@ -166,9 +168,11 @@
 
 <body>
   <header class="top">
-    <div class="quote" role="note" aria-label="Site quote">
-      <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
-      <span class="english">(Knowledge grows through questioning)</span>
+    <div class="quote" role="note" aria-label="Bible verse">
+      <span class="verse">
+        “If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you.”
+      </span>
+      <span class="ref">(James 1:5, NIV)</span>
     </div>
   </header>
 
