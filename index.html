@@ -8,14 +8,65 @@
 
   <!-- MUST match your file name exactly (you have style.css) -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Layout + intro placement rules:
+       Desktop: Featured | Intro (middle) | Circles
+       Mobile: Featured, Circles, then Intro (after circles)
+  -->
+  <style>
+    /* Only controlling placement; your style.css still handles look/colors */
+    .layout{
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      grid-template-areas: "featured intro nav";
+      align-items: start;
+    }
+    .featured{ grid-area: featured; }
+    .circle-nav{ grid-area: nav; }
+    .home-intro{ grid-area: intro; }
+
+    .home-intro{
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 18px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(0,0,0,0.10);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+      line-height: 1.6;
+      color: #000;
+    }
+    .home-intro p{ margin: 0 0 14px; }
+    .home-intro p:last-child{ margin-bottom: 0; }
+
+    @media (max-width: 700px){
+      .layout{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "featured"
+          "nav"
+          "intro";
+      }
+      .home-intro{
+        max-width: 680px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header class="top">
   <div class="quote">
-    <span class="tamil">கேள்வியால் அறிவு பெருகும்</span>
-    <span class="english">(Knowledge grows through questioning)</span>
+    <span class="tamil">
+      இழப்பின்றி தியாகம் இல்லை, தியாகமின்றி வாழ்வு இல்லை.
+      — வீரமாமுனிவர்
+    </span>
+    <span class="english">
+      Without loss there is no sacrifice, without sacrifice there is no true life.
+      — Veeramamunivar
+    </span>
   </div>
 
   <div class="tagline">If it ain't hand-written, it ain't here!</div>
@@ -23,7 +74,7 @@
 
 <main class="layout">
 
-  <!-- Featured (desktop left; mobile below circles via CSS order) -->
+  <!-- Featured (desktop left; mobile above circles via grid areas) -->
   <section class="featured" aria-label="Featured links">
     <h2>Featured</h2>
     <div class="featured-card">
@@ -31,6 +82,25 @@
         Discernment
       </a>
     </div>
+  </section>
+
+  <!-- Intro (desktop middle; mobile AFTER circles) -->
+  <section class="home-intro" aria-label="About this site">
+    <p>
+      The first drafts of all the articles, poems, or mini writings I post here are handwritten.
+      These are essentially truth-seeking exercises that I try to do regularly (sort of), through prayer,
+      listening to God, and writing.
+    </p>
+
+    <p>
+      If there is one thing I want you to take away from this website, it is this:
+      <strong>Write.</strong>
+    </p>
+
+    <p>
+      Writing helps organize the thoughts in your mind, and it can take you on a truth-seeking journey
+      you may not have experienced before.
+    </p>
   </section>
 
   <!-- Circle Nav -->
