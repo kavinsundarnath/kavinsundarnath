@@ -87,6 +87,8 @@ body{
   font-size: 18px;
   transition: opacity 280ms ease, transform 280ms ease;
 }
+.featured-card { justify-content: center; }
+.featured-link { display: block; width: 100%; text-align: center; }
 
 .featured-link:hover{
   text-decoration: underline;
