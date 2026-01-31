@@ -15,7 +15,7 @@
       font-family: Georgia, "Times New Roman", serif;
       color: #000;
 
-      /* Same peach → cream → strong blue */
+      /* Peach → cream → strong blue */
       background: linear-gradient(
         135deg,
         #f3c6a8 0%,
@@ -28,35 +28,12 @@
       min-height: 100vh;
     }
 
-    /* Header */
-    .top {
-      padding: 32px 24px 12px;
-      text-align: center;
-    }
-
-    .quote {
-      font-weight: 700;
-    }
-
-    .quote .tamil {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-
-    .quote .english {
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    /* Page layout */
     .page {
       max-width: 900px;
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
 
-    /* Back link */
     .back {
       font-size: 14px;
       font-weight: 600;
@@ -70,14 +47,12 @@
       text-decoration: underline;
     }
 
-    /* Title */
     h1 {
       text-align: center;
       font-size: 44px;
       margin: 0 0 48px;
     }
 
-    /* Mini list */
     .minis {
       display: flex;
       flex-direction: column;
@@ -98,7 +73,18 @@
       opacity: 0.85;
     }
 
-    /* Mobile */
+    .song {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 32px;
+      padding-left: 80px;
+    }
+
+    .song a {
+      color: #000;
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 36px;
@@ -111,22 +97,35 @@
       .minis a {
         font-size: 26px;
       }
+
+      .song {
+        padding-left: 24px;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <main class="page">
-    <a class="back" href="index.html">← Back to Home</a>
+    <a class="back" href="index.html">← Back to Minis</a>
 
     <h1>Minis</h1>
 
     <nav class="minis">
-      <a href="mini-1.html">Mini 1</a>
-      <a href="mini-2.html">Mathew 6:27</a>
+      <a href="mini-1.html">Rest</a>
+      <a href="mini-2.html">Mini 2</a>
     </nav>
-  </main>
 
+    <div class="song">
+      🎵
+      <a
+        href="https://www.youtube.com/watch?v=Optrm7lF16s&list=RDOptrm7lF16s&start_radio=1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Be Thou My Vision (Song)
+      </a>
+    </div>
+  </main>
 </body>
 </html>
