@@ -79,6 +79,7 @@ body{
   min-height: 72px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .featured-link{
@@ -86,9 +87,10 @@ body{
   color: #000;
   font-size: 18px;
   transition: opacity 280ms ease, transform 280ms ease;
+  display: block;      
+  width: 100%;            
+  text-align: center;     
 }
-.featured-card { justify-content: center; }
-.featured-link { display: block; width: 100%; text-align: center; }
 
 .featured-link:hover{
   text-decoration: underline;
