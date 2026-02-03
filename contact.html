@@ -20,6 +20,7 @@
         #8fa6e8 100%
       );
       min-height: 100vh;
+      color: #000;
     }
 
     .page{
@@ -36,6 +37,7 @@
       display: inline-block;
       margin-bottom: 28px;
     }
+    .back:hover{ text-decoration: underline; }
 
     h1{
       text-align: center;
@@ -49,6 +51,7 @@
       border-radius: 18px;
       padding: 26px;
       box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+      backdrop-filter: blur(10px);
     }
 
     label{
@@ -65,10 +68,15 @@
       border: 1px solid rgba(0,0,0,0.25);
       background: rgba(255,255,255,0.9);
       font-family: inherit;
+      outline: none;
+    }
+
+    input:focus, textarea:focus{
+      border-color: rgba(0,0,0,0.55);
     }
 
     textarea{
-      min-height: 140px;
+      min-height: 160px;
       resize: vertical;
     }
 
@@ -82,6 +90,7 @@
       background: rgba(0,0,0,0.85);
       color: #fff;
       cursor: pointer;
+      width: 180px;
     }
 
     button:hover{ opacity: 0.92; }
@@ -93,8 +102,19 @@
       opacity: 0.85;
     }
 
+    /* Honeypot: hidden from humans, visible to bots that fill everything */
+    .hp-wrap{
+      position: absolute !important;
+      left: -10000px !important;
+      top: auto !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+
     @media (max-width: 600px){
       h1{ font-size: 34px; }
+      button{ width: 100%; }
     }
   </style>
 </head>
@@ -106,41 +126,77 @@
     <h1>Contact</h1>
 
     <section class="card">
-      <form id="contactForm">
+      <form id="contactForm" novalidate>
         <label for="name">Name</label>
-        <input id="name" required />
+        <input id="name" name="name" autocomplete="name" required />
 
         <label for="email">Email</label>
-        <input id="email" type="email" required />
+        <input id="email" name="email" type="email" autocomplete="email" required />
 
         <label for="message">Message</label>
-        <textarea id="message" required></textarea>
+        <textarea id="message" name="message" required></textarea>
 
-        <button type="submit">Send</button>
+        <!-- Honeypot field (must be named "website" to match Apps Script) -->
+        <div class="hp-wrap" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
 
-        <div class="status" id="status"></div>
+        <button type="submit" id="sendBtn">Send</button>
+
+        <div class="status" id="status" role="status" aria-live="polite"></div>
       </form>
     </section>
   </main>
 
   <script>
-    const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+    // Paste your deployed Apps Script "Web app URL" here:
+    // It looks like: https://script.google.com/macros/s/XXXXXXX/exec
+    const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
 
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("status");
+    const sendBtn = document.getElementById("sendBtn");
+
+    // Time-to-submit protection: record when the user first loaded the form
+    const startedAt = Date.now();
+
+    function setStatus(text) {
+      statusEl.textContent = text;
+    }
+
+    function setBusy(isBusy) {
+      sendBtn.disabled = isBusy;
+      sendBtn.style.opacity = isBusy ? "0.7" : "1";
+      sendBtn.style.cursor = isBusy ? "not-allowed" : "pointer";
+    }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      statusEl.textContent = "Sending…";
+      const name = form.elements.name.value.trim();
+      const email = form.elements.email.value.trim();
+      const message = form.elements.message.value.trim();
+      const website = form.elements.website.value.trim(); // honeypot
+
+      // Basic front-end validation (server still validates)
+      if (!name) return setStatus("Please enter your name.");
+      if (!email || !email.includes("@")) return setStatus("Please enter a valid email.");
+      if (!message) return setStatus("Please enter a message.");
+
+      setBusy(true);
+      setStatus("Sending…");
 
       const payload = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        message: form.message.value.trim()
+        name,
+        email,
+        message,
+        website,     // honeypot (bots fill this)
+        startedAt    // time-to-submit check (Apps Script verifies)
       };
 
       try {
+        // NOTE: no-cors means we can't read JSON response, but the request will go through.
         await fetch(SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
@@ -148,10 +204,12 @@
           body: JSON.stringify(payload)
         });
 
-        statusEl.textContent = "Message sent. Thank you for writing.";
+        setStatus("Message sent. Thank you for writing.");
         form.reset();
-      } catch {
-        statusEl.textContent = "Something went wrong. Please try again.";
+      } catch (err) {
+        setStatus("Something went wrong. Please try again.");
+      } finally {
+        setBusy(false);
       }
     });
   </script>
