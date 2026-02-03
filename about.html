@@ -13,6 +13,7 @@
       font-family: Georgia, "Times New Roman", serif;
       color: #000;
 
+      /* SAME gradient as Articles */
       background: linear-gradient(
         135deg,
         #f3c6a8 0%,
@@ -63,7 +64,6 @@
       display: inline-block;
       margin-bottom: 32px;
     }
-
     .back:hover { text-decoration: underline; }
 
     h1 {
@@ -72,7 +72,6 @@
       margin: 0 0 24px;
     }
 
-    /* Intro card */
     .intro {
       max-width: 680px;
       margin: 0 auto 44px;
@@ -81,7 +80,7 @@
       background: rgba(255,255,255,0.55);
       border: 1px solid rgba(0,0,0,0.10);
       border-radius: 18px;
-      padding: 22px;
+      padding: 22px 22px;
       box-shadow: 0 14px 36px rgba(0,0,0,0.12);
     }
 
@@ -93,10 +92,10 @@
       margin-bottom: 0;
     }
 
-    /* Card blocks (Subscribe + Contact) */
-    .card {
+    /* Subscribe card */
+    .subscribe {
       max-width: 680px;
-      margin: 0 auto 28px;
+      margin: 0 auto;
       padding: 22px;
       border-radius: 18px;
       background: rgba(255,255,255,0.65);
@@ -105,28 +104,28 @@
       box-shadow: 0 18px 44px rgba(0,0,0,0.16);
     }
 
-    .card h2 {
+    .subscribe h2 {
       margin: 0 0 8px;
       font-size: 22px;
     }
 
-    .card p {
+    .subscribe p {
       margin: 0 0 14px;
       font-size: 16px;
       line-height: 1.5;
       opacity: 0.9;
     }
 
-    /* Subscribe form */
     .form-row {
       display: flex;
       gap: 10px;
       align-items: stretch;
+      margin-top: 10px;
     }
 
-    input[type="email"] {
+    input[type="email"]{
       flex: 1;
-      padding: 14px;
+      padding: 14px 14px;
       font-size: 16px;
       border-radius: 12px;
       border: 1px solid rgba(0,0,0,0.25);
@@ -135,43 +134,76 @@
       font-family: inherit;
     }
 
-    input[type="email"]:focus {
+    input[type="email"]:focus{
       border-color: rgba(0,0,0,0.55);
     }
 
-    button,
-    .contact-btn {
+    button{
       padding: 14px 18px;
       font-size: 15px;
       font-weight: 700;
       border-radius: 12px;
-      border: none;
+      border: 1px solid rgba(0,0,0,0.35);
       background: rgba(0,0,0,0.85);
       color: #fff;
       cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
     }
 
-    button:hover,
-    .contact-btn:hover {
-      opacity: 0.92;
-    }
+    button:hover { opacity: 0.92; }
 
-    .fineprint {
+    .fineprint{
       margin-top: 10px;
       font-size: 12px;
       opacity: 0.75;
       min-height: 18px;
     }
 
+    /* Contact card (below Subscribe) */
+    .contact {
+      max-width: 680px;
+      margin: 18px auto 0;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(0,0,0,0.10);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+    }
+
+    .contact h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .contact p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .contact a {
+      display: inline-block;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .contact a:hover { opacity: 0.92; }
+
     /* Mobile */
-    @media (max-width: 600px) {
+    @media (max-width: 600px){
       h1 { font-size: 36px; }
       .form-row { flex-direction: column; }
-      button,
-      .contact-btn { width: 100%; }
+      button { width: 100%; }
+      .contact a { width: 100%; }
     }
   </style>
 </head>
@@ -195,24 +227,22 @@
       <p>Hi! I am Kavin.</p>
 
       <p>
-        The first drafts of everything shared here are handwritten. Writing, for me,
-        is a way of listening — through prayer, reflection, and honesty.
+        The first drafts of all the articles, poems, or mini writings I post here are handwritten. These are essentially truth-seeking exercises that I try to do regularly (sort of), through prayer, listening to God, and writing. If it ain’t handwritten, it ain’t here!
       </p>
 
       <p>
-        If you feel you have nothing to write, start exactly there. Writing organizes
-        the thoughts in your mind and often leads you somewhere unexpected.
+        If there is one thing I want you to take away, it is this: Write. If you think that you have no clue what to write, perhaps your first sentence looks like this, "It is hard formulating my thoughts, and I do not know what to write". There will be flow after that.
       </p>
 
       <p>
-        If an imperfect soul like myself can write, so can you.
+        Writing helps organize the thoughts in your mind, and it can take you on a journey you may not have experienced before. Seriously, if an imperfect soul like myself can write, so can you.
       </p>
     </section>
 
-    <!-- Subscribe -->
-    <section class="card" aria-label="Subscribe">
+    <!-- Subscribe (UNCHANGED) -->
+    <section class="subscribe" aria-label="Subscribe">
       <h2>Subscribe</h2>
-      <p>If you'd like to be notified when I publish something new.</p>
+      <p>If you're interested, I can send notifications when I publish something new.</p>
 
       <form id="subscribeForm">
         <div class="form-row">
@@ -227,23 +257,22 @@
         </div>
 
         <div class="fineprint" id="msg">
-          Confirmation required — you’ll receive an email to confirm.
+          Confirmation (double opt-in): you’ll get an email to confirm before you’re fully subscribed.
         </div>
       </form>
     </section>
 
-    <!-- Contact -->
-    <section class="card" aria-label="Contact">
+    <!-- Contact (BELOW Subscribe) -->
+    <section class="contact" aria-label="Contact">
       <h2>Contact</h2>
-      <p>If you’d like to write to me directly.</p>
-
-      <a class="contact-btn" href="contact.html">Contact</a>
+      <p>If you'd like to write to me directly.</p>
+      <a href="contact.html">Contact</a>
     </section>
+
   </main>
 
   <script>
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbzKp1vriF-ZOkmwAFXUZlyNNeGK0rz9xzKkHIFmeJT1VmNyt9fB7YrZMW2DvNcnmuAb/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKp1vriF-ZOkmwAFXUZlyNNeGK0rz9xzKkHIFmeJT1VmNyt9fB7YrZMW2DvNcnmuAb/exec";
 
     const form = document.getElementById("subscribeForm");
     const msg = document.getElementById("msg");
@@ -265,9 +294,9 @@
           body: JSON.stringify({ email })
         });
 
-        msg.textContent = "Check your email to confirm.";
+        msg.textContent = "Check your email to confirm your subscription.";
         form.reset();
-      } catch {
+      } catch (err) {
         msg.textContent = "Something went wrong. Please try again.";
       }
     });
