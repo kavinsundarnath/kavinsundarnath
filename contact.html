@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact</title>
 
+  <style>
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(
+        135deg,
+        #f3c6a8 0%,
+        #efe2d8 38%,
+        #e6e9f5 55%,
+        #b7c6ee 78%,
+        #8fa6e8 100%
+      );
+      min-height: 100vh;
+    }
+
+    .page{
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .back{
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+      margin-bottom: 28px;
+    }
+
+    h1{
+      text-align: center;
+      font-size: 42px;
+      margin: 0 0 28px;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+    }
+
+    label{
+      display: block;
+      font-weight: 700;
+      margin: 16px 0 6px;
+    }
+
+    input, textarea{
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.9);
+      font-family: inherit;
+    }
+
+    textarea{
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    button{
+      margin-top: 18px;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: none;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover{ opacity: 0.92; }
+
+    .status{
+      margin-top: 12px;
+      font-size: 14px;
+      min-height: 18px;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px){
+      h1{ font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <a class="back" href="about.html">← Back</a>
+
+    <h1>Contact</h1>
+
+    <section class="card">
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input id="name" required />
+
+        <label for="email">Email</label>
+        <input id="email" type="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" required></textarea>
+
+        <button type="submit">Send</button>
+
+        <div class="status" id="status"></div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      statusEl.textContent = "Sending…";
+
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim()
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        statusEl.textContent = "Message sent. Thank you for writing.";
+        form.reset();
+      } catch {
+        statusEl.textContent = "Something went wrong. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
