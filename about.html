@@ -13,7 +13,6 @@
       font-family: Georgia, "Times New Roman", serif;
       color: #000;
 
-      /* SAME gradient as Articles */
       background: linear-gradient(
         135deg,
         #f3c6a8 0%,
@@ -64,6 +63,7 @@
       display: inline-block;
       margin-bottom: 32px;
     }
+
     .back:hover { text-decoration: underline; }
 
     h1 {
@@ -72,6 +72,7 @@
       margin: 0 0 24px;
     }
 
+    /* Intro card */
     .intro {
       max-width: 680px;
       margin: 0 auto 44px;
@@ -80,7 +81,7 @@
       background: rgba(255,255,255,0.55);
       border: 1px solid rgba(0,0,0,0.10);
       border-radius: 18px;
-      padding: 22px 22px;
+      padding: 22px;
       box-shadow: 0 14px 36px rgba(0,0,0,0.12);
     }
 
@@ -92,10 +93,10 @@
       margin-bottom: 0;
     }
 
-    /* Subscribe card */
-    .subscribe {
+    /* Card blocks (Subscribe + Contact) */
+    .card {
       max-width: 680px;
-      margin: 0 auto;
+      margin: 0 auto 28px;
       padding: 22px;
       border-radius: 18px;
       background: rgba(255,255,255,0.65);
@@ -104,53 +105,61 @@
       box-shadow: 0 18px 44px rgba(0,0,0,0.16);
     }
 
-    .subscribe h2 {
+    .card h2 {
       margin: 0 0 8px;
       font-size: 22px;
     }
 
-    .subscribe p {
+    .card p {
       margin: 0 0 14px;
       font-size: 16px;
       line-height: 1.5;
       opacity: 0.9;
     }
 
+    /* Subscribe form */
     .form-row {
       display: flex;
       gap: 10px;
       align-items: stretch;
-      margin-top: 10px;
     }
 
-    input[type="email"]{
+    input[type="email"] {
       flex: 1;
-      padding: 14px 14px;
+      padding: 14px;
       font-size: 16px;
       border-radius: 12px;
       border: 1px solid rgba(0,0,0,0.25);
       background: rgba(255,255,255,0.85);
       outline: none;
+      font-family: inherit;
     }
 
-    input[type="email"]:focus{
+    input[type="email"]:focus {
       border-color: rgba(0,0,0,0.55);
     }
 
-    button{
+    button,
+    .contact-btn {
       padding: 14px 18px;
       font-size: 15px;
       font-weight: 700;
       border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.35);
+      border: none;
       background: rgba(0,0,0,0.85);
       color: #fff;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
     }
 
-    button:hover { opacity: 0.92; }
+    button:hover,
+    .contact-btn:hover {
+      opacity: 0.92;
+    }
 
-    .fineprint{
+    .fineprint {
       margin-top: 10px;
       font-size: 12px;
       opacity: 0.75;
@@ -158,10 +167,11 @@
     }
 
     /* Mobile */
-    @media (max-width: 600px){
+    @media (max-width: 600px) {
       h1 { font-size: 36px; }
       .form-row { flex-direction: column; }
-      button { width: 100%; }
+      button,
+      .contact-btn { width: 100%; }
     }
   </style>
 </head>
@@ -185,21 +195,24 @@
       <p>Hi! I am Kavin.</p>
 
       <p>
-        The first drafts of all the articles, poems, or mini writings I post here are handwritten. These are essentially truth-seeking exercises that I try to do regularly (sort of), through prayer, listening to God, and writing. If it ain’t handwritten, it ain’t here!
+        The first drafts of everything shared here are handwritten. Writing, for me,
+        is a way of listening — through prayer, reflection, and honesty.
       </p>
 
       <p>
-        If there is one thing I want you to take away, it is this: Write. If you think that you have no clue what to write, perhaps your first sentence looks like this, "It is hard formulating my thoughts, and I do not know what to write". There will be flow after that.
+        If you feel you have nothing to write, start exactly there. Writing organizes
+        the thoughts in your mind and often leads you somewhere unexpected.
       </p>
 
       <p>
-        Writing helps organize the thoughts in your mind, and it can take you on a journey you may not have experienced before. Seriously, if an imperfect soul like myself can write, so can you.
+        If an imperfect soul like myself can write, so can you.
       </p>
     </section>
 
-    <section class="subscribe" aria-label="Subscribe">
+    <!-- Subscribe -->
+    <section class="card" aria-label="Subscribe">
       <h2>Subscribe</h2>
-      <p>If you're interested, I can send notifications when I publish something new.</p>
+      <p>If you'd like to be notified when I publish something new.</p>
 
       <form id="subscribeForm">
         <div class="form-row">
@@ -214,14 +227,23 @@
         </div>
 
         <div class="fineprint" id="msg">
-          Confirmation (double opt-in): you’ll get an email to confirm before you’re fully subscribed.
+          Confirmation required — you’ll receive an email to confirm.
         </div>
       </form>
+    </section>
+
+    <!-- Contact -->
+    <section class="card" aria-label="Contact">
+      <h2>Contact</h2>
+      <p>If you’d like to write to me directly.</p>
+
+      <a class="contact-btn" href="contact.html">Contact</a>
     </section>
   </main>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKp1vriF-ZOkmwAFXUZlyNNeGK0rz9xzKkHIFmeJT1VmNyt9fB7YrZMW2DvNcnmuAb/exec";
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbzKp1vriF-ZOkmwAFXUZlyNNeGK0rz9xzKkHIFmeJT1VmNyt9fB7YrZMW2DvNcnmuAb/exec";
 
     const form = document.getElementById("subscribeForm");
     const msg = document.getElementById("msg");
@@ -243,9 +265,9 @@
           body: JSON.stringify({ email })
         });
 
-        msg.textContent = "Check your email to confirm your subscription.";
+        msg.textContent = "Check your email to confirm.";
         form.reset();
-      } catch (err) {
+      } catch {
         msg.textContent = "Something went wrong. Please try again.";
       }
     });
